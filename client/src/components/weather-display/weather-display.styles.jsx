@@ -26,8 +26,8 @@ export const WeatherDataGrid = styled.div`
   /* grid-template-columns: 1fr 1fr 1fr; */
   /* grid-template-columns: repeat(minmax(200, 1fr), 3); */
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-template-rows: 1fr 1fr;
-  grid-gap: 100px 25px;
+  /* grid-template-rows: 1fr 1fr; */
+  grid-gap: 75px 25px;
   justify-items: center;
   align-items: center;
 `;
@@ -48,6 +48,3 @@ export const WeatherPrimaryIconContainer = styled.img`
   height: 150px;
 `;
 
-export const WeatherDisplayHeaderContainer = styled.div``;
-
-export const WeatherDisplayTitleContainer = styled.h1``;

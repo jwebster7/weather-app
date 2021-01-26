@@ -2,7 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 // const enforce = require("express-sslify");
-const request = require("request");
+const got = require("got");
 
 // if in a dev environment, use the key defined in .env
 if (process.env.NODE_ENV !== "production") {
@@ -38,26 +38,35 @@ app.get("/", (req, res) => {
 });
 
 app.get("/weather", (req, res) => {
-  const partialUrl = "http://api.openweathermap.org/data/2.5/weather";
   const { lat, lon, units } = req.query; // will eventually live in req.body
-  const queryParams = {
-    lat: lat,
-    lon: lon,
-    units: units,
-    appid: apiKey
-  };
+  const endPoint = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
 
-  request({ url: partialUrl, qs: queryParams }, (err, resp) => {
-    if (resp.statusCode === 200) {
+  (async () => {
+    try {
+      const resp = await got(endPoint);
       res.send(JSON.parse(resp.body));
-    } else {
-      const errRes = {
-        error: err,
-        status: resp.statusCode
-      };
-      res.send(errRes);
+    } catch (err) {
+      // console.log(err);
+      res.send(err);
     }
-  });
+  })();
+});
+
+app.get("/reverse-geocode", (req, res) => {
+  const { lat, lon } = req.query; // will eventually live in req.body
+  const endPoint = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=jsonv2&zoom=10`;
+
+  (async () => {
+    try {
+      const resp = await got(endPoint);
+      // const { address } = JSON.parse(resp.body);
+      const address = JSON.parse(resp.body).address;
+      res.send(address);
+    } catch (err) {
+      // console.log(err);
+      res.send(err);
+    }
+  })();
 });
 
 app.listen(port, (error) => {

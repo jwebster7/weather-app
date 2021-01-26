@@ -4,8 +4,6 @@ import {
   WeatherDataContainer,
   WeatherDataGrid,
   WeatherDisplayContainer,
-  WeatherDisplayHeaderContainer,
-  WeatherDisplayTitleContainer,
   WeatherIconContainer,
   WeatherPrimaryIconContainer,
   WeatherTextContainer
@@ -15,7 +13,6 @@ import {
 // import HotThermometerIcon from "../../assets/thermometer-hot.png";
 import FeverIcon from "../../assets/fever.png";
 import HumidityIcon from "../../assets/humidity.png";
-import SunnyDayIcon from "../../assets/sunny-day.png";
 import ThermometerIcon from "../../assets/thermometer.png";
 import ThermometerUpArrowIcon from "../../assets/thermometer-up-arrow.png";
 import ThermometerDownArrowIcon from "../../assets/thermometer-down-arrow.png";
@@ -34,7 +31,7 @@ const WeatherDisplay = ({ main, windSpeed }) => {
   const mainDataDisplay = main ? (
     Object.keys(main).map((key, index) => {
       return (
-        <WeatherDataContainer key={index}>
+        <WeatherDataContainer key={index} aria-label={key.toString()}>
           <WeatherIconContainer src={keyToIconMap[key]} />
           <WeatherTextContainer>{main[key]}</WeatherTextContainer>
         </WeatherDataContainer>
@@ -45,7 +42,7 @@ const WeatherDisplay = ({ main, windSpeed }) => {
   );
 
   const windSpeedDisplay = (
-    <WeatherDataContainer>
+    <WeatherDataContainer aria-label={"speed"}>
       <WeatherIconContainer src={keyToIconMap["speed"]} />
       <WeatherTextContainer>{windSpeed}</WeatherTextContainer>
     </WeatherDataContainer>
@@ -53,11 +50,6 @@ const WeatherDisplay = ({ main, windSpeed }) => {
 
   return (
     <WeatherDisplayContainer className="weather-display-container">
-      <WeatherDisplayHeaderContainer className="weather-display-header">
-        <WeatherPrimaryIconContainer src={SunnyDayIcon} />
-        {/* TODO: Need to pull the City and State somehow from the coordinates and replace the title with the City, State */}
-        <WeatherDisplayTitleContainer>City, State</WeatherDisplayTitleContainer>
-      </WeatherDisplayHeaderContainer>
       <WeatherDataGrid>
         {mainDataDisplay}
         {windSpeedDisplay}

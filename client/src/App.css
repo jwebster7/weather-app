@@ -1,3 +1,11 @@
 .App {
-
+  min-width: 100%;
+  min-height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(106, 90, 205, 0.10);
+  overflow: auto;
 }
