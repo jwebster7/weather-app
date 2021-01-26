@@ -47,7 +47,7 @@ app.get("/weather", (req, res) => {
       res.send(JSON.parse(resp.body));
     } catch (err) {
       // console.log(err);
-      res.send(err);
+      res.status(500).send(err);
     }
   })();
 });
@@ -64,7 +64,7 @@ app.get("/reverse-geocode", (req, res) => {
       res.send(address);
     } catch (err) {
       // console.log(err);
-      res.send(err);
+      res.status(500).send(err);
     }
   })();
 });

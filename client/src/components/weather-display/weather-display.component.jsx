@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+
+import { getWeatherData } from "../../API";
 
 import {
   WeatherDataContainer,
   WeatherDataGrid,
   WeatherDisplayContainer,
   WeatherIconContainer,
-  WeatherPrimaryIconContainer,
   WeatherTextContainer
 } from "./weather-display.styles";
 
@@ -27,7 +28,28 @@ const keyToIconMap = {
   humidity: HumidityIcon
 };
 
-const WeatherDisplay = ({ main, windSpeed }) => {
+const WeatherDisplay = ({ position }) => {
+  const [main, setMain] = useState({});
+  const [windSpeed, setWindSpeed] = useState("");
+
+  useEffect(() => {
+    const { latitude, longitude } = position;
+    try {
+      getWeatherData(latitude, longitude).then((resp) => {
+        if (resp.status === 200) {
+          const { main, wind } = resp.data;
+          delete main.pressure;
+          setMain(main);
+          setWindSpeed(wind.speed);
+          // setWeather(weather);
+        }
+      });
+    } catch (error) {
+      alert("There was an issue fetching weather data!");
+      console.log(error);
+    }
+  }, [position]);
+
   const mainDataDisplay = main ? (
     Object.keys(main).map((key, index) => {
       return (
