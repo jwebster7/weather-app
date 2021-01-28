@@ -23,7 +23,7 @@ export const WeatherDataGrid = styled.div`
   margin-top: auto;
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-template-rows: 1fr 1fr;
   grid-gap: 75px 25px;
   justify-items: center;

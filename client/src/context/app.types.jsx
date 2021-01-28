@@ -1,0 +1,7 @@
+const AppActionTypes = {
+  GET_COORDINATES: "GET_COORDINATES",
+  GET_CITY_STATE: "GET_CITY_STATE",
+  GET_CURRENT_WEATHER_DATA: "GET_CURRENT_WEATHER_DATA"
+};
+
+export default AppActionTypes;

@@ -21,6 +21,7 @@ export const getCityAndState = async (latitude, longitude) => {
     lat: latitude,
     lon: longitude
   };
+
   try {
     const res = await axios.get("/reverse-geocode", {
       params: params
@@ -29,4 +30,12 @@ export const getCityAndState = async (latitude, longitude) => {
   } catch (error) {
     return error;
   }
+
+  // const endPoint = `https://nominatim.openstreetmap.org/reverse?lat=${params.lat}&lon=${params.lon}&format=jsonv2&zoom=10`;
+  // try {
+  //   const res = await axios.get(endPoint);
+  //   return res;
+  // } catch (error) {
+  //   return error;
+  // }
 };

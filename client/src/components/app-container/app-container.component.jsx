@@ -6,11 +6,16 @@ import Home from "../../pages/home/home.component";
 import Location from "../../pages/location/location.component";
 import Weather from "../../pages/weather/weather.component";
 
+import { useAppData } from "../../context/app.provider";
+
 import { AppStyledContainer } from "./app-container.styles";
 
 const AppContainer = () => {
+  const { state, dispatch } = useAppData();
+  console.log(state);
+
   return (
-    <AppStyledContainer>
+    <AppStyledContainer className="app-container">
       <Switch>
         <Route exact path="/">
           <Redirect to="/home" />

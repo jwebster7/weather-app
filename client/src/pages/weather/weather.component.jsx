@@ -5,34 +5,33 @@ import WeatherDisplay from "../../components/weather-display/weather-display.com
 import WeatherHeader from "../../components/weather-header/weather-header.component";
 import { useLocationData } from "../../context/location/location.provider";
 
+// import { useAddressData, useCurrentWeatherData } from "../../context/app.provider";
+import { useAppData } from "../../context/app.provider";
+
 import { WeatherContainer } from "./weather.styles";
 
 const Weather = () => {
-  const [loading, isLoading] = useState(true);
-  const position = useLocationData();
+  const [loading, setLoading] = useState(true);
+  const { state } = useAppData();
+  const { weather } = state;
+  const { current } = weather;
+  const { address } = state;
+
+  console.log(weather);
+  console.log(address);
+
   useEffect(() => {
-    const { latitude, longitude } = position;
-
-    if (!!latitude && !!longitude) {
-      isLoading(false);
-    } else {
-      isLoading(true);
+    if (!!current && !!address) {
+      setLoading(false);
     }
-  }, [position]);
-
-  // return (
-  //   <WeatherContainer className="weather-container">
-  //     <WeatherHeader position={} />
-  //     <WeatherDisplay position={} />
-  //   </WeatherContainer>
-  // );
+  }, [current, address]);
 
   return loading ? (
     <Spinner />
   ) : (
     <WeatherContainer className="weather-container">
-      <WeatherHeader position={position} />
-      <WeatherDisplay position={position} />
+      <WeatherHeader address={address} />
+      <WeatherDisplay current={current} />
     </WeatherContainer>
   );
 };

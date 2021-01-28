@@ -4,13 +4,9 @@ export const WeatherContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 75%;
-  /* min-width: 675px; */
-  height: 75%;
-  padding: 75px 50px;
+  width: 100%;
+  height: 100%;
   display: flex;
-  background-color: rgba(255, 255, 255, 0.65);
-  border-radius: 25px;
   overflow-y: auto;
   /* 
   @media screen and (max-width: 800px) {

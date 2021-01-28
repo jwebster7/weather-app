@@ -1,15 +1,22 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
-
-import { HomePageContainer } from "./home.styles";
+// import CustomButton from "../../components/custom-button/custom-button.component";
+import {
+  HomeTitleContainer,
+  HomePageContainer,
+  PageLink,
+  PageLinkContainer
+} from "./home.styles";
 
 const Home = () => {
-
   return (
-    <HomePageContainer>
-      <Link to="/weather">Get the latest weather data</Link>
-      <Link to="/location">Manually enter your City, State</Link>
+    <HomePageContainer className="home-container">
+      <HomeTitleContainer>What's the Weather?</HomeTitleContainer>
+      <PageLinkContainer>
+        <PageLink to="/weather">Get the latest weather data</PageLink>
+        <PageLink to="/location">Manually enter your City, State</PageLink>
+      </PageLinkContainer>
+      {/* <CustomButton /> */}
     </HomePageContainer>
   );
 };

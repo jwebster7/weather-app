@@ -1,13 +1,23 @@
 import styled from "styled-components";
 
-export const LocationContainer = styled.div`
-  width: 380px;
-  display: flex;
-  flex-direction: column;
+export const FormContainer = styled.form`
 
-  @media screen and (max-width: 800px) {
-    width: 325px;
-  }
+`;
+
+export const FormInput = styled.input`
+  background: none;
+  background-color: white;
+  font-size: 30px;
+  padding: 10px 10px 10px 5px;
+  display: block;
+  width: 100%;
+  border: none;
+  border-radius: 0;
+  margin: 25px 0;
+`;
+
+export const FormTitle = styled.h2`
+  margin: 10px 0;
 `;
 
 export const ButtonContainer = styled.div`
@@ -18,8 +28,4 @@ export const ButtonContainer = styled.div`
     grid-template-columns: 1fr 1fr;
     grid-gap: 10px
   }
-`;
-
-export const LocationTitle = styled.h2`
-  margin: 10px 0;
 `;

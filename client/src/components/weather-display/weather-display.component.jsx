@@ -28,47 +28,27 @@ const keyToIconMap = {
   humidity: HumidityIcon
 };
 
-const WeatherDisplay = ({ position }) => {
-  const [main, setMain] = useState({});
-  const [windSpeed, setWindSpeed] = useState("");
+const WeatherDisplay = ({ current }) => {
+  const { main, wind } = current;
+  const { speed } = wind;
 
-  useEffect(() => {
-    const { latitude, longitude } = position;
-    try {
-      getWeatherData(latitude, longitude).then((resp) => {
-        if (resp.status === 200) {
-          const { main, wind } = resp.data;
-          delete main.pressure;
-          setMain(main);
-          setWindSpeed(wind.speed);
-          // setWeather(weather);
-        }
-      });
-    } catch (error) {
-      alert("There was an issue fetching weather data!");
-      console.log(error);
-    }
-  }, [position]);
+  const mainDataDisplay = main
+    ? Object.keys(main).map((key, index) => {
+        return (
+          <WeatherDataContainer key={index} aria-label={key.toString()}>
+            <WeatherIconContainer src={keyToIconMap[key]} />
+            <WeatherTextContainer>{main[key]}</WeatherTextContainer>
+          </WeatherDataContainer>
+        );
+      })
+    : null;
 
-  const mainDataDisplay = main ? (
-    Object.keys(main).map((key, index) => {
-      return (
-        <WeatherDataContainer key={index} aria-label={key.toString()}>
-          <WeatherIconContainer src={keyToIconMap[key]} />
-          <WeatherTextContainer>{main[key]}</WeatherTextContainer>
-        </WeatherDataContainer>
-      );
-    })
-  ) : (
-    <div>No main data found! </div>
-  );
-
-  const windSpeedDisplay = (
+  const windSpeedDisplay = speed ? (
     <WeatherDataContainer aria-label={"speed"}>
       <WeatherIconContainer src={keyToIconMap["speed"]} />
-      <WeatherTextContainer>{windSpeed}</WeatherTextContainer>
+      <WeatherTextContainer>{speed}</WeatherTextContainer>
     </WeatherDataContainer>
-  );
+  ) : null;
 
   return (
     <WeatherDisplayContainer className="weather-display-container">
@@ -78,6 +58,15 @@ const WeatherDisplay = ({ position }) => {
       </WeatherDataGrid>
     </WeatherDisplayContainer>
   );
+
+  // return !loading ? (
+  //   <WeatherDisplayContainer className="weather-display-container">
+  //     <WeatherDataGrid>
+  //       {mainDataDisplay}
+  //       {windSpeedDisplay}
+  //     </WeatherDataGrid>
+  //   </WeatherDisplayContainer>
+  // ) : null;
 };
 
 export default WeatherDisplay;

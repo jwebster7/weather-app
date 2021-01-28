@@ -1,19 +1,16 @@
 import styled from "styled-components";
 
 export const AppStyledContainer = styled.div`
-  min-width: 100%;
-  min-height: 100%;
-  position: relative;
-  left: 0;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  min-height: 800px;
+  width: 75%;
+  padding: 75px 50px;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 15px;
+  justify-content: flex-start;
   font-family: "Raleway", sans-serif;
   font-size: 30px;
+  background-color: rgba(255, 255, 255, 0.65);
+  border-radius: 50px;
 `;

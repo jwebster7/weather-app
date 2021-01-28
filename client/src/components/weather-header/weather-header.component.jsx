@@ -10,31 +10,12 @@ import {
   WeatherPrimaryIconContainer
 } from "./weather-header.styles";
 
-const WeatherHeader = ({ position }) => {
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-
-  useEffect(() => {
-    const { latitude, longitude } = position;
-    try {
-      getCityAndState(latitude, longitude).then((resp) => {
-        if (resp.status === 200) {
-          const { city, state } = resp.data;
-          setCity(city.toString());
-          setState(state.toString());
-        }
-      });
-    } catch (error) {
-      alert("There was an issue fetching City and State data!");
-      console.log(error);
-    }
-  }, [position]);
-
+const WeatherHeader = ({ address }) => {
   return (
     <WeatherDisplayHeaderContainer className="weather-display-header">
       <WeatherPrimaryIconContainer src={SunnyDayIcon} />
       <WeatherDisplayTitleContainer>
-        {city}, {state}
+        {address.city} {address.state}
       </WeatherDisplayTitleContainer>
     </WeatherDisplayHeaderContainer>
   );
