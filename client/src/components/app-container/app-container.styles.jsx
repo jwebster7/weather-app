@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const AppStyledContainer = styled.div`
-  min-height: 800px;
+  min-height: 830px;
   width: 75%;
   padding: 75px 50px;
 

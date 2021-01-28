@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
+import ReactTooltip from "react-tooltip";
 
-import { getWeatherData } from "../../API";
+import { useCurrentWeatherData } from "../../context/app.provider";
+
+import Spinner from "../spinner/spinner.component";
 
 import {
   WeatherDataContainer,
@@ -28,45 +31,66 @@ const keyToIconMap = {
   humidity: HumidityIcon
 };
 
-const WeatherDisplay = ({ current }) => {
-  const { main, wind } = current;
+const keyToUnitMap = {
+  temp: "F",
+  feels_like: "F",
+  temp_max: "F",
+  temp_min: "F",
+  speed: "m/h",
+  humidity: "%"
+};
+
+const keyToTextMap = {
+  temp: "Temperature",
+  feels_like: "Feels Like",
+  temp_max: "High",
+  temp_min: "Low",
+  speed: "Speed",
+  humidity: "Humidity"
+};
+
+const WeatherDisplay = () => {
+  const { main, wind } = useCurrentWeatherData();
   const { speed } = wind;
 
   const mainDataDisplay = main
     ? Object.keys(main).map((key, index) => {
         return (
-          <WeatherDataContainer key={index} aria-label={key.toString()}>
+          <WeatherDataContainer
+            key={index}
+            aria-label={keyToTextMap[key]}
+            data-tip={keyToTextMap[key]}
+          >
             <WeatherIconContainer src={keyToIconMap[key]} />
-            <WeatherTextContainer>{main[key]}</WeatherTextContainer>
+            <WeatherTextContainer>
+              {main[key]} {keyToUnitMap[key]}
+            </WeatherTextContainer>
+            <ReactTooltip />
           </WeatherDataContainer>
         );
       })
     : null;
 
   const windSpeedDisplay = speed ? (
-    <WeatherDataContainer aria-label={"speed"}>
+    <WeatherDataContainer aria-label={keyToTextMap['speed']} data-tip={keyToTextMap['speed']}>
       <WeatherIconContainer src={keyToIconMap["speed"]} />
       <WeatherTextContainer>{speed}</WeatherTextContainer>
     </WeatherDataContainer>
   ) : null;
 
-  return (
+  const isloading = !(!!mainDataDisplay && !!windSpeedDisplay);
+
+  return isloading ? (
+    <Spinner />
+  ) : (
     <WeatherDisplayContainer className="weather-display-container">
       <WeatherDataGrid>
         {mainDataDisplay}
         {windSpeedDisplay}
       </WeatherDataGrid>
+      <ReactTooltip />
     </WeatherDisplayContainer>
   );
-
-  // return !loading ? (
-  //   <WeatherDisplayContainer className="weather-display-container">
-  //     <WeatherDataGrid>
-  //       {mainDataDisplay}
-  //       {windSpeedDisplay}
-  //     </WeatherDataGrid>
-  //   </WeatherDisplayContainer>
-  // ) : null;
 };
 
 export default WeatherDisplay;

@@ -14,4 +14,6 @@ export const WeatherPrimaryIconContainer = styled.img`
 `;
 
 
-export const WeatherDisplayTitleContainer = styled.h1``;
+export const WeatherDisplayTitleContainer = styled.h1`
+  font-size: 40px;
+`;

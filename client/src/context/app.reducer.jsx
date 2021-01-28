@@ -1,14 +1,17 @@
-import App from "../App";
 import AppActionTypes from "./app.types";
 
 const AppReducer = (state, action) => {
   switch (action.type) {
-    case AppActionTypes.GET_COORDINATES:
+    case AppActionTypes.SET_COORDINATES:
+      // adding coordinates to localStorage in case of refresh so this api call doesn't have to be remade
+      window.localStorage.setItem("coordinates", JSON.stringify(action.payload));
       return { ...state, coordinates: action.payload };
-    case AppActionTypes.GET_CITY_STATE:
+    case AppActionTypes.SET_CITY_STATE:
       return { ...state, address: action.payload };
     case AppActionTypes.GET_CURRENT_WEATHER_DATA:
       return { ...state, weather: { current: action.payload } };
+    case AppActionTypes.TOGGLE_GEOLOCATION_ENABLED:
+      return { ...state, geolocationEnabled: action.payload };
     default:
       return state;
   }

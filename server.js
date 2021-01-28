@@ -37,14 +37,14 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.get("/weather", (req, res) => {
+app.get("/weather-lat-lon", (req, res) => {
   const { lat, lon, units } = req.query; // will eventually live in req.body
   const endPoint = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
 
   (async () => {
     try {
       const resp = await got(endPoint);
-      res.send(JSON.parse(resp.body));
+      res.status(200).send(JSON.parse(resp.body));
     } catch (err) {
       // console.log(err);
       res.status(500).send(err);
@@ -61,9 +61,22 @@ app.get("/reverse-geocode", (req, res) => {
       const resp = await got(endPoint);
       // const { address } = JSON.parse(resp.body);
       const address = JSON.parse(resp.body).address;
-      res.send(address);
+      res.status(200).send(address);
     } catch (err) {
-      // console.log(err);
+      res.status(500).send(err);
+    }
+  })();
+});
+
+app.get("/weather-city-state", (req, res) => {
+  const { city, state } = req.query; // will eventually live in req.body
+  const endPoint = `http://api.openweathermap.org/data/2.5/weather?q=${city},${state}&units=imperial&appid=5758202996b1be0ee8ceedce38bf2225`;
+
+  (async () => {
+    try {
+      const resp = await got(endPoint);
+      res.status(200).send(JSON.parse(resp.body));
+    } catch (err) {
       res.status(500).send(err);
     }
   })();

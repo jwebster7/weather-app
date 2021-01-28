@@ -1,13 +1,12 @@
 import React from "react";
+// import { useAppData } from "../../context/app.provider";
 
-// import LocationForm from "../../components/location-form/location-form.component";
+import LocationForm from "../../components/location-form/location-form.component";
 
 const Location = () => {
   return (
     <div>
-      <div>
-        Location Page
-      </div>
+      <LocationForm />
     </div>
   );
 };

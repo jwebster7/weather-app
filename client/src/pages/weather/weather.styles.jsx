@@ -3,9 +3,9 @@ import styled from "styled-components";
 export const WeatherContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  flex-grow: 1;
   width: 100%;
-  height: 100%;
   display: flex;
   overflow-y: auto;
   /* 

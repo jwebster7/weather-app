@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from "react";
+// import React, { useContext, useEffect, useState } from "react";
+import React from "react";
 
-import { getCityAndState } from "../../API";
+import { useAddressData } from "../../context/app.provider";
+
+import Spinner from "../spinner/spinner.component";
 
 import SunnyDayIcon from "../../assets/sunny-day.png";
 
@@ -10,14 +13,17 @@ import {
   WeatherPrimaryIconContainer
 } from "./weather-header.styles";
 
-const WeatherHeader = ({ address }) => {
-  return (
+const WeatherHeader = () => {
+  const address = useAddressData();
+  return !!address.city && !!address.state ? (
     <WeatherDisplayHeaderContainer className="weather-display-header">
       <WeatherPrimaryIconContainer src={SunnyDayIcon} />
       <WeatherDisplayTitleContainer>
         {address.city} {address.state}
       </WeatherDisplayTitleContainer>
     </WeatherDisplayHeaderContainer>
+  ) : (
+    <Spinner />
   );
 };
 

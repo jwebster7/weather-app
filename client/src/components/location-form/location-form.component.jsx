@@ -1,7 +1,12 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 
 import CustomButton from "../custom-button/custom-button.component";
 import { FormContainer, FormInput, FormTitle } from "./location-form.styles";
+
+import { useDispatch } from "../../context/app.provider";
+import AppActionTypes from "../../context/app.types";
+import { getWeatherDataByCityState } from "../../API";
 
 const initialState = {
   city: "",
@@ -9,21 +14,48 @@ const initialState = {
 };
 
 const LocationForm = () => {
-  // const [city, setCity] = useState("");
-  // const [state, setState] = useState("");
-  const [location, setLocation] = useState(initialState);
+  const [address, setAddress] = useState(initialState);
+  const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleChange = (event) => {
     event.preventDefault();
     const { name, value } = event.target;
-    setLocation({ ...location, [name]: value });
+    setAddress({ ...address, [name]: value });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    getWeatherDataByCityState(address.city, address.state).then((resp) => {
+      try {
+        if (resp.status === 200) {
+          const { main, wind } = resp.data;
+          const { coord } = resp.data;
+          delete main.pressure;
+          const current = { main, wind };
+          dispatch({
+            type: AppActionTypes.GET_CURRENT_WEATHER_DATA,
+            payload: current
+          });
+          dispatch({
+            type: AppActionTypes.SET_COORDINATES,
+            payload: { latitude: coord.lat, longitude: coord.lon }
+          });
+          dispatch({
+            type: AppActionTypes.SET_CITY_STATE,
+            payload: address
+          });
+        }
+      } catch (error) {
+        alert("There was an issue fetching weather data!");
+        console.log(error);
+      }
+    });
 
+    history.push("/weather");
   };
 
-  const { city, state } = location;
+  const { city, state } = address;
 
   return (
     <FormContainer className="form-container" onSubmit={handleSubmit}>
@@ -46,7 +78,7 @@ const LocationForm = () => {
         onChange={handleChange}
         required
       />
-      <CustomButton type="submit">SIGN UP</CustomButton>
+      <CustomButton type="submit">Get Weather</CustomButton>
     </FormContainer>
   );
 };
