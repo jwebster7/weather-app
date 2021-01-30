@@ -2,11 +2,19 @@ import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
 import CustomButton from "../custom-button/custom-button.component";
-import { FormContainer, FormInput, FormTitle } from "./location-form.styles";
+import {
+  ButtonContainer,
+  FormContainer,
+  FormInputLabel,
+  FormInput,
+  FormInputContainer,
+  FormTitle
+} from "./location-form.styles";
 
 import { useDispatch } from "../../context/app.provider";
 import AppActionTypes from "../../context/app.types";
 import { getWeatherDataByCityState } from "../../API";
+import { getLocalTimeData } from "../../API.utils";
 
 const initialState = {
   city: "",
@@ -24,35 +32,38 @@ const LocationForm = () => {
     setAddress({ ...address, [name]: value });
   };
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    getWeatherDataByCityState(address.city, address.state).then((resp) => {
+    const { city, state } = address;
+    getWeatherDataByCityState(city, state).then((resp) => {
       try {
         if (resp.status === 200) {
-          const { main, wind } = resp.data;
-          const { coord } = resp.data;
-          delete main.pressure;
-          const current = { main, wind };
-          dispatch({
-            type: AppActionTypes.GET_CURRENT_WEATHER_DATA,
-            payload: current
-          });
+          const { coord } = resp?.data;
+          const dateTime = getLocalTimeData(resp?.data);
           dispatch({
             type: AppActionTypes.SET_COORDINATES,
             payload: { latitude: coord.lat, longitude: coord.lon }
           });
           dispatch({
-            type: AppActionTypes.SET_CITY_STATE,
-            payload: address
+            type: AppActionTypes.SET_LOCAL_DATE_TIME,
+            payload: dateTime
           });
+          // dispatch({
+          //   type: AppActionTypes.GET_CURRENT_WEATHER_DATA,
+          //   payload: current
+          // });
+          // dispatch({
+          //   type: AppActionTypes.SET_CITY_STATE,
+          //   payload: { city, state }
+          // });
+
+          history.push("/weather");
         }
       } catch (error) {
         alert("There was an issue fetching weather data!");
         console.log(error);
       }
     });
-
-    history.push("/weather");
   };
 
   const { city, state } = address;
@@ -60,25 +71,31 @@ const LocationForm = () => {
   return (
     <FormContainer className="form-container" onSubmit={handleSubmit}>
       <FormTitle>Enter your City and State</FormTitle>
-      <label>City: </label>
-      <FormInput
-        type="text"
-        name="city"
-        label="city"
-        value={city}
-        onChange={handleChange}
-        required
-      />
-      <label>State: </label>
-      <FormInput
-        type="text"
-        name="state"
-        label="state"
-        value={state}
-        onChange={handleChange}
-        required
-      />
-      <CustomButton type="submit">Get Weather</CustomButton>
+      <FormInputContainer>
+        <FormInputLabel>City </FormInputLabel>
+        <FormInput
+          type="text"
+          name="city"
+          label="city"
+          value={city}
+          placeholder="city name"
+          onChange={handleChange}
+          required
+        />
+        <FormInputLabel>State </FormInputLabel>
+        <FormInput
+          type="text"
+          name="state"
+          label="state"
+          value={state}
+          placeholder="state name"
+          onChange={handleChange}
+          // required
+        />
+      </FormInputContainer>
+      <ButtonContainer>
+        <CustomButton type="submit">Get Weather</CustomButton>
+      </ButtonContainer>
     </FormContainer>
   );
 };

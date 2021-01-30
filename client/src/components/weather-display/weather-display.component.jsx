@@ -50,11 +50,10 @@ const keyToTextMap = {
 };
 
 const WeatherDisplay = () => {
-  const { main, wind } = useCurrentWeatherData();
-  const { speed } = wind;
+  const current = useCurrentWeatherData();
 
-  const mainDataDisplay = main
-    ? Object.keys(main).map((key, index) => {
+  const weatherDataDisplay = current
+    ? Object.keys(current).map((key, index) => {
         return (
           <WeatherDataContainer
             key={index}
@@ -63,7 +62,7 @@ const WeatherDisplay = () => {
           >
             <WeatherIconContainer src={keyToIconMap[key]} />
             <WeatherTextContainer>
-              {main[key]} {keyToUnitMap[key]}
+              {current[key]} {keyToUnitMap[key]}
             </WeatherTextContainer>
             <ReactTooltip />
           </WeatherDataContainer>
@@ -71,23 +70,19 @@ const WeatherDisplay = () => {
       })
     : null;
 
-  const windSpeedDisplay = speed ? (
-    <WeatherDataContainer aria-label={keyToTextMap['speed']} data-tip={keyToTextMap['speed']}>
-      <WeatherIconContainer src={keyToIconMap["speed"]} />
-      <WeatherTextContainer>{speed}</WeatherTextContainer>
-    </WeatherDataContainer>
-  ) : null;
+  const isLoading =
+    !!current?.temp &&
+    !!current?.feels_like &&
+    !!current?.temp_max &&
+    !!current?.temp_min &&
+    !!current?.speed &&
+    !!current?.humidity;
 
-  const isloading = !(!!mainDataDisplay && !!windSpeedDisplay);
-
-  return isloading ? (
+  return !isLoading ? (
     <Spinner />
   ) : (
     <WeatherDisplayContainer className="weather-display-container">
-      <WeatherDataGrid>
-        {mainDataDisplay}
-        {windSpeedDisplay}
-      </WeatherDataGrid>
+      <WeatherDataGrid>{weatherDataDisplay}</WeatherDataGrid>
       <ReactTooltip />
     </WeatherDisplayContainer>
   );

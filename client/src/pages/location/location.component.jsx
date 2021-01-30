@@ -3,11 +3,13 @@ import React from "react";
 
 import LocationForm from "../../components/location-form/location-form.component";
 
+import { LocationContainer } from "./location.styles";
+
 const Location = () => {
   return (
-    <div>
+    <LocationContainer>
       <LocationForm />
-    </div>
+    </LocationContainer>
   );
 };
 

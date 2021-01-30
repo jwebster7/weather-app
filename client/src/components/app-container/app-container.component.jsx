@@ -2,6 +2,8 @@ import React from "react";
 
 import { Route, Switch, Redirect } from "react-router-dom";
 
+import About from "../../pages/about/about.component";
+import Forecast from "../../pages/forecast/forecast.component";
 import Home from "../../pages/home/home.component";
 import Location from "../../pages/location/location.component";
 import Weather from "../../pages/weather/weather.component";
@@ -19,33 +21,11 @@ const AppContainer = () => {
         <Route path="/home" component={Home} />
         <Route path="/weather" component={Weather} />
         <Route path="/location" component={Location} />
+        <Route path="/about" component={About} />
+        <Route path="/forecast" component={Forecast} />
       </Switch>
     </AppStyledContainer>
   );
 };
 
 export default AppContainer;
-
-// <div>
-// Icons made by{" "}
-// <a
-//   href="https://www.flaticon.com/authors/vitaly-gorbachev"
-//   title="Vitaly Gorbachev"
-// >
-//   Vitaly Gorbachev
-// </a>{" "}
-// from{" "}
-// <a href="https://www.flaticon.com/" title="Flaticon">
-//   www.flaticon.com
-// </a>
-// </div>
-// <div>
-// Icons made by{" "}
-// <a href="https://www.freepik.com" title="Freepik">
-//   Freepik
-// </a>{" "}
-// from{" "}
-// <a href="https://www.flaticon.com/" title="Flaticon">
-//   www.flaticon.com
-// </a>
-// </div>

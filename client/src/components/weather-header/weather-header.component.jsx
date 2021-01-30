@@ -1,13 +1,14 @@
 // import React, { useContext, useEffect, useState } from "react";
 import React from "react";
-
-import { useAddressData } from "../../context/app.provider";
+import { useAddressData, useDateTimeData } from "../../context/app.provider";
 
 import Spinner from "../spinner/spinner.component";
 
 import SunnyDayIcon from "../../assets/sunny-day.png";
 
 import {
+  LocationContainer,
+  TimeContainer,
   WeatherDisplayHeaderContainer,
   WeatherDisplayTitleContainer,
   WeatherPrimaryIconContainer
@@ -15,11 +16,19 @@ import {
 
 const WeatherHeader = () => {
   const address = useAddressData();
-  return !!address.city && !!address.state ? (
+  const dateTime = useDateTimeData();
+  const city = address?.city ? `${address?.city}, ` : "";
+  const county = address?.county ? `${address?.county}, ` : "";
+  const state = address?.state ? `${address?.state}` : "";
+
+  return address && dateTime ? (
     <WeatherDisplayHeaderContainer className="weather-display-header">
       <WeatherPrimaryIconContainer src={SunnyDayIcon} />
       <WeatherDisplayTitleContainer>
-        {address.city} {address.state}
+        <LocationContainer>
+          {city} {county} {state}
+        </LocationContainer>
+        <TimeContainer>{dateTime}</TimeContainer>
       </WeatherDisplayTitleContainer>
     </WeatherDisplayHeaderContainer>
   ) : (

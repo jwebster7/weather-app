@@ -1,6 +1,6 @@
 import React from "react";
 
-// import CustomButton from "../../components/custom-button/custom-button.component";
+import CustomButton from "../../components/custom-button/custom-button.component";
 import {
   HomeTitleContainer,
   HomePageContainer,
@@ -13,10 +13,19 @@ const Home = () => {
     <HomePageContainer className="home-container">
       <HomeTitleContainer>What's the Weather?</HomeTitleContainer>
       <PageLinkContainer>
-        <PageLink to="/weather">Get the latest weather data</PageLink>
-        <PageLink to="/location">Manually enter your City, State</PageLink>
+        <PageLink to="/location">
+          <CustomButton>Enter City &amp; State</CustomButton>
+        </PageLink>
+        <PageLink to="/weather">
+          <CustomButton>Latest weather data</CustomButton>
+        </PageLink>
+        <PageLink to="/forecast">
+          <CustomButton>Weekly forecast</CustomButton>
+        </PageLink>
+        <PageLink to="/about">
+          <CustomButton>About this site</CustomButton>
+        </PageLink>
       </PageLinkContainer>
-      {/* <CustomButton /> */}
     </HomePageContainer>
   );
 };
