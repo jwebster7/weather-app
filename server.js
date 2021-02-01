@@ -11,8 +11,7 @@ if (process.env.NODE_ENV !== "production") {
 
 const app = express();
 const port = process.env.PORT || 5000; // if PORT is defined in .env use that, otherwise 5000
-// const port = 5000;
-const apiKey = process.env.OPEN_WEATHER_API_KEY; // defined as an env variable
+const OPEN_WEATHER_API_KEY = process.env.OPEN_WEATHER_API_KEY; // defined as an env variable
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -33,33 +32,31 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-app.get("/", (req, res) => {
-  res.send("Hello World!");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello World!");
+// });
 
 app.get("/weather-lat-lon", (req, res) => {
-  const { lat, lon, units } = req.query; // will eventually live in req.body
-  const endPoint = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${apiKey}`;
+  const { lat, lon, units } = req.query;
+  const endPoint = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${OPEN_WEATHER_API_KEY}`;
 
   (async () => {
     try {
       const resp = await got(endPoint);
       res.status(200).send(JSON.parse(resp.body));
     } catch (err) {
-      // console.log(err);
       res.status(500).send(err);
     }
   })();
 });
 
 app.get("/reverse-geocode", (req, res) => {
-  const { lat, lon } = req.query; // will eventually live in req.body
+  const { lat, lon } = req.query;
   const endPoint = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=jsonv2&zoom=10`;
 
   (async () => {
     try {
       const resp = await got(endPoint);
-      // const { address } = JSON.parse(resp.body);
       const address = JSON.parse(resp.body).address;
       res.status(200).send(address);
     } catch (err) {
@@ -69,8 +66,22 @@ app.get("/reverse-geocode", (req, res) => {
 });
 
 app.get("/weather-city-state", (req, res) => {
-  const { city, state } = req.query; // will eventually live in req.body
+  const { city, state } = req.query;
   const endPoint = `http://api.openweathermap.org/data/2.5/weather?q=${city},${state}&units=imperial&appid=5758202996b1be0ee8ceedce38bf2225`;
+
+  (async () => {
+    try {
+      const resp = await got(endPoint);
+      res.status(200).send(JSON.parse(resp.body));
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  })();
+});
+
+app.get("/forecast", (req, res) => {
+  const { lat, lon } = req.query;
+  const endPoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=hourly,minutely,alerts&appid=${OPEN_WEATHER_API_KEY}`;
 
   (async () => {
     try {

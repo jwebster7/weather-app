@@ -17,12 +17,15 @@ const AppContainer = () => {
         <Route exact path="/">
           <Redirect to="/home" />
         </Route>
+        <Route exact path="/forecast">
+          <Redirect to="/home" />
+        </Route>
 
         <Route path="/home" component={Home} />
         <Route path="/weather" component={Weather} />
         <Route path="/location" component={Location} />
         <Route path="/about" component={About} />
-        <Route path="/forecast" component={Forecast} />
+        <Route path="/forecast/:forecastid" exactly component={Forecast} />
       </Switch>
     </AppStyledContainer>
   );

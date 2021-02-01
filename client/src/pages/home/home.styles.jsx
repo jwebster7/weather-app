@@ -10,14 +10,28 @@ export const HomePageContainer = styled.div`
   flex-direction: column;
   /* justify-content: space-between; */
   overflow-y: auto;
+
+  @media screen and (max-width: 600px) {
+    /* width: 100%; */
+    display: flex;
+    flex-grow: 0;
+    /* width: 90%; */
+    /* justify-content: space-between; */
+    /* overflow-y: auto; */
+  }
 `;
 
-export const HomeTitleContainer = styled.h1``;
+export const HomeTitleContainer = styled.h1`
+  /* margin-top: 0px; */
+  text-align: center;
+
+  @media screen and (max-width: 600px) {
+    font-size: 35px;
+  }
+`;
 
 export const PageLinkContainer = styled.div`
-  /* min-height: 400px; */
   width: 80%;
-  /* margin: auto 0 100px 0; */
   margin-top: 100px;
 
   display: grid;
@@ -26,6 +40,13 @@ export const PageLinkContainer = styled.div`
   grid-gap: 100px;
   justify-items: center;
   align-items: center;
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    margin-top: 50px;
+    grid-gap: 50px;
+    /* font-size: 15px; */
+  }
 `;
 
 export const PageLink = styled(Link)`

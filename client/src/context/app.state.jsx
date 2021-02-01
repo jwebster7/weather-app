@@ -1,4 +1,9 @@
 export const initialState = {
+  weather: {
+    main: "",
+    description: "",
+    icon: ""
+  },
   current: {
     feels_like: 0,
     humidity: 0,
@@ -8,6 +13,24 @@ export const initialState = {
     temp_min: 0,
     speed: 0
   },
+  forecast: [
+    {
+      dt: 0,
+      weather: {
+        main: "",
+        description: "",
+        icon: ""
+      },
+      current: {
+        temp: "",
+        temp_max: "",
+        temp_min: "",
+        feels_like: "",
+        speed: "",
+        humidity: ""
+      }
+    }
+  ],
   dateTime: "",
   address: {
     city: "",

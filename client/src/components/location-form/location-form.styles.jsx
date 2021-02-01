@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const FormContainer = styled.form`
   width: 100%;
   display: flex;
-  /* flex-grow: 1; */
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
@@ -18,6 +17,10 @@ export const FormInputContainer = styled.div`
 
 export const FormInputLabel = styled.label`
   font-weight: 700;
+
+  @media screen and (max-width: 600px) {
+    font-size: 25px;
+  }
 `;
 
 export const FormInput = styled.input`
@@ -37,7 +40,10 @@ export const FormInput = styled.input`
 `;
 
 export const FormTitle = styled.h2`
-  margin: 10px 0 50px 0;
+  margin: 10px 0 30px 0;
+  @media screen and (max-width: 600px) {
+    font-size: 35px;
+  }
 `;
 
 export const ButtonContainer = styled.div`

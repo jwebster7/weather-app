@@ -7,4 +7,10 @@ export const LocationContainer = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+
+  @media screen and (max-width: 600px) {
+    display: flex;
+    width: 90%;
+    justify-content: space-around;
+  }
 `;

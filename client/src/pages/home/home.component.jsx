@@ -13,13 +13,13 @@ const Home = () => {
     <HomePageContainer className="home-container">
       <HomeTitleContainer>What's the Weather?</HomeTitleContainer>
       <PageLinkContainer>
-        <PageLink to="/location">
-          <CustomButton>Enter City &amp; State</CustomButton>
-        </PageLink>
         <PageLink to="/weather">
           <CustomButton>Latest weather data</CustomButton>
         </PageLink>
-        <PageLink to="/forecast">
+        <PageLink to="/location">
+          <CustomButton>Enter City &amp; State</CustomButton>
+        </PageLink>
+        <PageLink to={`/forecast/${0}`}>
           <CustomButton>Weekly forecast</CustomButton>
         </PageLink>
         <PageLink to="/about">

@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import Header from "../../components/header/header.component";
 
 import {
   AboutCreditsContainer,
@@ -13,6 +13,7 @@ import {
 const About = () => {
   return (
     <AboutPageContainer>
+      <Header />
       <AboutTitleContainer>About</AboutTitleContainer>
       <AboutTextContainer>
         Hi! My name is Joe Webster. I'm a Software Developer based in the
@@ -82,8 +83,48 @@ const About = () => {
             </a>
             <br />
           </CreditsListItem>
-          <CreditsListItem>Icons created by Vitaly Gorbachev</CreditsListItem>
-          {/* <CreditsListItem></CreditsListItem> */}
+          <CreditsListItem>
+            Icon authors:
+            <br />
+          </CreditsListItem>
+          <CreditsListContainer>
+            <CreditsListItem>
+              <a
+                href="https://www.freepik.com"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Freepik
+              </a>
+            </CreditsListItem>
+            <CreditsListItem>
+              <a
+                href="https://www.flaticon.com/authors/vitaly-gorbachev"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Vitaly Gorbachev
+              </a>
+            </CreditsListItem>
+            <CreditsListItem>
+              <a
+                href="https://www.flaticon.com/authors/vignesh-oviyan"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Vignesh Oviyan
+              </a>
+            </CreditsListItem>
+            <CreditsListItem>
+              <a
+                href="https://www.flaticon.com/authors/srip"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                srip
+              </a>
+            </CreditsListItem>
+          </CreditsListContainer>
         </CreditsListContainer>
       </AboutCreditsContainer>
     </AboutPageContainer>

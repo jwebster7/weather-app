@@ -12,26 +12,38 @@ export const TimeContainer = styled.span`
   justify-content: center;
   align-items: center;
   font-size: 25px;
+
+  @media screen and (max-width: 600px) {
+    font-size: 15px;
+  }
 `;
 
 export const WeatherDisplayHeaderContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 75px;
+  margin-bottom: 25px;
 `;
 
 export const WeatherPrimaryIconContainer = styled.img`
-  /* margin-left: 50px; */
   width: 150px;
   height: 150px;
+
+  @media screen and (max-width: 600px) {
+    width: 75px;
+    height: 75px;
+  }
 `;
 
 export const WeatherDisplayTitleContainer = styled.div`
-  padding: 75px 0 0;
+  padding: 30px 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   flex-grow: 1;
   font-size: 40px;
+
+  @media screen and (max-width: 600px) {
+    font-size: 25px;
+  }
 `;

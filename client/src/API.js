@@ -1,41 +1,5 @@
 import axios from "axios";
 
-// export const getWeatherData = async (latitude, longitude) => {
-//   const params = {
-//     lat: latitude,
-//     lon: longitude,
-//     units: "imperial"
-//   };
-//   try {
-//     // console.log("In getWeatherData");
-//     const res = await axios.get("/weather", {
-//       params: params
-//     });
-//     // console.log(res);
-//     return res;
-//   } catch (error) {
-//     return error;
-//   }
-// };
-
-// export const getCityAndState = async (latitude, longitude) => {
-//   const params = {
-//     lat: latitude,
-//     lon: longitude
-//   };
-
-//   try {
-//     // console.log("In getCityAndState");
-//     const res = await axios.get("/reverse-geocode", {
-//       params: params
-//     });
-//     // console.log(res);
-//     return res;
-//   } catch (error) {
-//     return error;
-//   }
-// };
-
 export const getWeatherDataByCoords = (latitude, longitude) => {
   const params = {
     lat: latitude,
@@ -43,12 +7,10 @@ export const getWeatherDataByCoords = (latitude, longitude) => {
     units: "imperial"
   };
   try {
-    // console.log("In getWeatherData");
-    const res = axios.get("/weather-lat-lon", {
+    const resp = axios.get("/weather-lat-lon", {
       params: params
     });
-    // console.log(res);
-    return res;
+    return resp;
   } catch (error) {
     return error;
   }
@@ -61,12 +23,10 @@ export const getWeatherDataByCityState = (city, state) => {
     units: "imperial"
   };
   try {
-    // console.log("In getWeatherData");
-    const res = axios.get("/weather-city-state", {
+    const resp = axios.get("/weather-city-state", {
       params: params
     });
-    // console.log(res);
-    return res;
+    return resp;
   } catch (error) {
     return error;
   }
@@ -79,12 +39,37 @@ export const getCityAndState = (latitude, longitude) => {
   };
 
   try {
-    // console.log("In getCityAndState");
-    const res = axios.get("/reverse-geocode", {
+    const resp = axios.get("/reverse-geocode", {
       params: params
     });
-    // console.log(res);
-    return res;
+    return resp;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getWeatherForecast = (latitude, longitude) => {
+  const params = {
+    lat: latitude,
+    lon: longitude
+  };
+
+  try {
+    const resp = axios.get("/forecast", {
+      params: params
+    });
+    return resp;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const getWeatherIcon = (iconId) => {
+  const endPoint = `http://openweathermap.org/img/wn/${iconId}@2x.png`;
+
+  try {
+    const resp = axios.get(endPoint);
+    return resp;
   } catch (error) {
     return error;
   }

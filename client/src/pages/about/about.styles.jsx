@@ -5,10 +5,16 @@ export const AboutPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
+  font-size: 25px;
+  @media screen and (max-width: 600px) {
+    padding: 0;
+    /* width: 100%; */
+    font-size: 15px;
+  }
 `;
 
 export const AboutTitleContainer = styled.h2`
-  margin: 10px 0 50px 0;
+  margin: 10px 0 30px 0;
 `;
 
 export const AboutTextContainer = styled.span`

@@ -14,7 +14,7 @@ import {
 import { useDispatch } from "../../context/app.provider";
 import AppActionTypes from "../../context/app.types";
 import { getWeatherDataByCityState } from "../../API";
-import { getLocalTimeData } from "../../API.utils";
+import { formatWeatherStatusData, getLocalTimeData } from "../../API.utils";
 
 const initialState = {
   city: "",
@@ -40,6 +40,8 @@ const LocationForm = () => {
         if (resp.status === 200) {
           const { coord } = resp?.data;
           const dateTime = getLocalTimeData(resp?.data);
+          const weather = formatWeatherStatusData(resp?.data);
+          // console.log(weather);
           dispatch({
             type: AppActionTypes.SET_COORDINATES,
             payload: { latitude: coord.lat, longitude: coord.lon }
@@ -47,6 +49,10 @@ const LocationForm = () => {
           dispatch({
             type: AppActionTypes.SET_LOCAL_DATE_TIME,
             payload: dateTime
+          });
+          dispatch({
+            type: AppActionTypes.SET_WEATHER_STATUS,
+            payload: weather
           });
           // dispatch({
           //   type: AppActionTypes.GET_CURRENT_WEATHER_DATA,
@@ -70,7 +76,7 @@ const LocationForm = () => {
 
   return (
     <FormContainer className="form-container" onSubmit={handleSubmit}>
-      <FormTitle>Enter your City and State</FormTitle>
+      <FormTitle>Enter City &amp; State</FormTitle>
       <FormInputContainer>
         <FormInputLabel>City </FormInputLabel>
         <FormInput
