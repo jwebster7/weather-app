@@ -1,7 +1,9 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-// const enforce = require("express-sslify");
+const compression = require("compression");
+const enforce = require("express-sslify");
+const path = require("path");
 const got = require("got");
 
 // if in a dev environment, use the key defined in .env
@@ -31,10 +33,6 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 }
-
-// app.get("/", (req, res) => {
-//   res.send("Hello World!");
-// });
 
 app.get("/weather-lat-lon", (req, res) => {
   const { lat, lon, units } = req.query;
