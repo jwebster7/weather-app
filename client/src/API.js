@@ -7,9 +7,11 @@ export const getWeatherDataByCoords = (latitude, longitude) => {
     units: "imperial"
   };
   try {
-    const resp = axios.get("/weather-lat-lon", {
-      params: params
-    });
+    // const resp = axios.get("/weather-lat-lon", {
+    //   params: params
+    // });
+    const endPoint = `http://api.openweathermap.org/data/2.5/weather?lat=${params.lat}&lon=${params.lon}&units=${params.units}&appid=${'5758202996b1be0ee8ceedce38bf2225'}`;
+    const resp = axios.get(endPoint);
     return resp;
   } catch (error) {
     return error;
