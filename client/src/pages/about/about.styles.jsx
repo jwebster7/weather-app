@@ -8,8 +8,8 @@ export const AboutPageContainer = styled.div`
   font-size: 25px;
   @media screen and (max-width: 600px) {
     padding: 0;
-    /* width: 100%; */
     font-size: 15px;
+    text-align: justify;
   }
 `;
 

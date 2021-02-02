@@ -13,7 +13,11 @@ export const TimeContainer = styled.span`
   align-items: center;
   font-size: 25px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1000px) {
+    font-size: 20px;
+  }
+
+  @media screen and (max-width: 800px) {
     font-size: 15px;
   }
 `;
@@ -29,7 +33,12 @@ export const WeatherPrimaryIconContainer = styled.img`
   width: 150px;
   height: 150px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1000px) {
+    width: 125px;
+    height: 125px;
+  }
+
+  @media screen and (max-width: 800px) {
     width: 75px;
     height: 75px;
   }
@@ -43,7 +52,11 @@ export const WeatherDisplayTitleContainer = styled.div`
   flex-grow: 1;
   font-size: 40px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1000px) {
+    font-size: 32.5px;
+  }
+
+  @media screen and (max-width: 800px) {
     font-size: 25px;
   }
 `;

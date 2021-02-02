@@ -64,7 +64,10 @@ const Forecast = ({ history }) => {
         <CustomButton onClick={handlePrevDay} disabled={pageCount === 0}>
           Previous Day
         </CustomButton>
-        <CustomButton onClick={handleNextDay} disabled={pageCount === days.length - 1}>
+        <CustomButton
+          onClick={handleNextDay}
+          disabled={pageCount === days.length - 1}
+        >
           Next Day
         </CustomButton>
       </ForecastPageButtonContainer>

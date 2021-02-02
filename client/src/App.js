@@ -14,7 +14,7 @@ const App = () => {
           <AppContainer />
         </AppProvider>
       </BrowserRouter>
-      <div className="created-by">Created by Joseph Webster</div>
+      <div className="created-by">Created in 2020 by Joseph Webster</div>
     </div>
   );
 };

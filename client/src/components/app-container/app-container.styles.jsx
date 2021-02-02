@@ -15,8 +15,12 @@ export const AppStyledContainer = styled.div`
   background-color: rgba(255, 255, 255, 0.65);
   border-radius: 50px;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 1100px) {
     padding: 25px 25px 30px 25px;
     min-height: 600px;
+  }
+
+  @media screen and (max-width: 800px) {
+    min-height: 525px;
   }
 `;

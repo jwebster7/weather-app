@@ -18,15 +18,16 @@ const About = () => {
       <AboutTextContainer>
         Hi! My name is Joe Webster. I'm a Software Developer based in the
         midwest. This is a Weather App I made to get more experience with
-        ReactJS (and it's growing ecoystem), ExpressJS, NodeJS and working with
-        external APIs.
+        ReactJS, ExpressJS, and NodeJS. The primary focus when building this app
+        was to work with state and external APIs.
       </AboutTextContainer>
       <AboutTextContainer>
-        This application consumes a third-party API for fetching weather data
-        and displays the data based on user location. It interacts with the
+        This application consumes a third-party API by fetching weather data and
+        displaying the forecast based on user location. It interacts with the
         browser's Geolocation API to gather coordinate data. These coordinates
-        are then used as query parameters for API calls. If location services
-        are disabled, users may enter their City and State manually.
+        are then used as parameters for API calls the the Open Weather API. If
+        location services are disabled by the host, users may alternatively
+        enter their City and State manually.
       </AboutTextContainer>
       <AboutTextContainer>
         You can find me on{" "}

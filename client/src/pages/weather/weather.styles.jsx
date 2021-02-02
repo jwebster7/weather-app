@@ -8,20 +8,10 @@ export const WeatherContainer = styled.div`
   width: 100%;
   display: flex;
   overflow-y: auto;
-  
-  @media screen and (max-width: 600px) {
-    /* width: 90%; */
-    justify-content: space-evenly;
-  }
-`;
 
-export const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  @media screen and (max-width: 800px) {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10px;
+  @media screen and (max-width: 1000px) {
+    width: 90%;
+    justify-content: space-evenly;
   }
 `;
 

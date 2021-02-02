@@ -41,7 +41,6 @@ const LocationForm = () => {
           const { coord } = resp?.data;
           const dateTime = getLocalTimeData(resp?.data);
           const weather = formatWeatherStatusData(resp?.data);
-          // console.log(weather);
           dispatch({
             type: AppActionTypes.SET_COORDINATES,
             payload: { latitude: coord.lat, longitude: coord.lon }
@@ -54,14 +53,6 @@ const LocationForm = () => {
             type: AppActionTypes.SET_WEATHER_STATUS,
             payload: weather
           });
-          // dispatch({
-          //   type: AppActionTypes.GET_CURRENT_WEATHER_DATA,
-          //   payload: current
-          // });
-          // dispatch({
-          //   type: AppActionTypes.SET_CITY_STATE,
-          //   payload: { city, state }
-          // });
 
           history.push("/weather");
         }
@@ -96,7 +87,6 @@ const LocationForm = () => {
           value={state}
           placeholder="state name"
           onChange={handleChange}
-          // required
         />
       </FormInputContainer>
       <ButtonContainer>

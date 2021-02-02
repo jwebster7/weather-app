@@ -5,23 +5,29 @@ export const ForecastPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  /* align-items: center; */
   flex-grow: 1;
   width: 100%;
   display: flex;
   overflow-y: auto;
-  /* 
+
   @media screen and (max-width: 800px) {
-    width: 325px;
-  } */
+    width: 90%;
+  }
 `;
 
-export const DailyForecastContainer = styled.div`
-  
-`;
+export const DailyForecastContainer = styled.div``;
 
 export const ForecastPageButtonContainer = styled.div`
-  /* padding-top: 25p */
+  /* width: 90%; */
+  /* padding: 0 50px; */
   display: flex;
-  flex-direction: row;
   justify-content: space-between;
+
+  @media screen and (max-width: 1200px) {
+    padding: 0;
+  }
+
+  @media screen and (max-width: 800px) {
+  }
 `;

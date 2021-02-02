@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const CustomButtonContainer = styled.button`
   height: 75px;
-  width: 350px;
+  width: 325px;
   border-radius: 75px;
   padding: 0;
   border: none;
@@ -26,9 +26,7 @@ export const CustomButtonContainer = styled.button`
 
   &:hover {
     background-color: rgb(255, 255, 255);
-    /* padding: 0; */
     border: 1.5px solid black;
-    /* background: none; */
     color: black;
   }
 
@@ -36,10 +34,16 @@ export const CustomButtonContainer = styled.button`
     outline: none;
   }
 
-  @media screen and (max-width: 600px) {
-    height: 55px;
-    max-width: 225px;
-    font-size: 17.5px;
+  @media screen and (max-width: 1100px) {
+    height: 75px;
+    max-width: 275px;
+    font-size: 20px;
     margin: 0 15px;
+  }
+
+  @media screen and (max-width: 600px) {
+    height: 65px;
+    max-width: 200px;
+    font-size: 17.5px;
   }
 `;
