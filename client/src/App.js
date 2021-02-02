@@ -9,11 +9,11 @@ import "./App.css";
 const App = () => {
   return (
     <div className="App">
-      <BrowserRouter>
-        <AppProvider>
+      <AppProvider>
+        <BrowserRouter>
           <AppContainer />
-        </AppProvider>
-      </BrowserRouter>
+        </BrowserRouter>
+      </AppProvider>
       <div className="created-by">Created in 2020 by Joseph Webster</div>
     </div>
   );
