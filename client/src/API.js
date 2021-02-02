@@ -13,6 +13,7 @@ export const getWeatherDataByCoords = (latitude, longitude) => {
     console.log('test');
     const endPoint = `https://api.openweathermap.org/data/2.5/weather?lat=${params.lat}&lon=${params.lon}&units=${params.units}&appid=${'5758202996b1be0ee8ceedce38bf2225'}`;
     const resp = axios.get(endPoint);
+    console.log(resp);
     return resp;
   } catch (error) {
     return error;
