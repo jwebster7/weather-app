@@ -6,7 +6,6 @@ const enforce = require("express-sslify");
 const path = require("path");
 const got = require("got");
 
-// if in a dev environment, use the key defined in .env
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
@@ -18,7 +17,6 @@ const OPEN_WEATHER_API_KEY = process.env.OPEN_WEATHER_API_KEY; // defined as an 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-// app.use(enforce.HTTPS({ trustProtoHeader: true }));
 
 if (process.env.NODE_ENV === "production") {
   app.use(compression());
@@ -33,6 +31,12 @@ if (process.env.NODE_ENV === "production") {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 }
+
+app.listen(port, (error) => {
+  if (error) throw error;
+  console.log(`Server running on port: ${port}`);
+});
+
 
 app.get("/weather-lat-lon", (req, res) => {
   const { lat, lon, units } = req.query;
@@ -89,9 +93,4 @@ app.get("/forecast", (req, res) => {
       res.status(500).send(err);
     }
   })();
-});
-
-app.listen(port, (error) => {
-  if (error) throw error;
-  console.log(`Server running on port: ${port}`);
 });
