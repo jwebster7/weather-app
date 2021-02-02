@@ -1,18 +1,17 @@
 import axios from "axios";
 
 export const getWeatherDataByCoords = (latitude, longitude) => {
-  const params = {
-    lat: latitude,
-    lon: longitude,
-    units: "imperial"
-  };
+  // const params = {
+  //   lat: latitude,
+  //   lon: longitude,
+  //   units: "imperial"
+  // };
   try {
+    const endPoint = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${process.env.OPEN_WEATHER_API_KEY}`;
+    const resp = axios.get(endPoint);
     // const resp = axios.get("/weather-lat-lon", {
     //   params: params
     // });
-    console.log('test');
-    const endPoint = `https://api.openweathermap.org/data/2.5/weather?lat=${params.lat}&lon=${params.lon}&units=${params.units}&appid=${'5758202996b1be0ee8ceedce38bf2225'}`;
-    const resp = axios.get(endPoint);
     return resp;
   } catch (error) {
     return error;
@@ -20,15 +19,17 @@ export const getWeatherDataByCoords = (latitude, longitude) => {
 };
 
 export const getWeatherDataByCityState = (city, state) => {
-  const params = {
-    city: city,
-    state: state,
-    units: "imperial"
-  };
+  // const params = {
+  //   city: city,
+  //   state: state,
+  //   units: "imperial"
+  // };
   try {
-    const resp = axios.get("/weather-city-state", {
-      params: params
-    });
+    const endPoint = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state}&units=imperial&appid=${process.env.OPEN_WEATHER_API_KEY}`;
+    const resp = axios.get(endPoint);
+    // const resp = axios.get("/weather-city-state", {
+    //   params: params
+    // });
     return resp;
   } catch (error) {
     return error;
@@ -36,15 +37,17 @@ export const getWeatherDataByCityState = (city, state) => {
 };
 
 export const getCityAndState = (latitude, longitude) => {
-  const params = {
-    lat: latitude,
-    lon: longitude
-  };
+  // const params = {
+  //   lat: latitude,
+  //   lon: longitude
+  // };
 
   try {
-    const resp = axios.get("/reverse-geocode", {
-      params: params
-    });
+    const endPoint = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=jsonv2&zoom=10`;
+    const resp = axios.get(endPoint);
+    // const resp = axios.get("/reverse-geocode", {
+    //   params: params
+    // });
     return resp;
   } catch (error) {
     return error;
@@ -52,15 +55,17 @@ export const getCityAndState = (latitude, longitude) => {
 };
 
 export const getWeatherForecast = (latitude, longitude) => {
-  const params = {
-    lat: latitude,
-    lon: longitude
-  };
+  // const params = {
+  //   lat: latitude,
+  //   lon: longitude
+  // };
 
   try {
-    const resp = axios.get("/forecast", {
-      params: params
-    });
+    const endPoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&exclude=hourly,minutely,alerts&appid=${process.env.OPEN_WEATHER_API_KEY}`;
+    const resp = axios.get(endPoint);
+    // const resp = axios.get("/forecast", {
+    //   params: params
+    // });
     return resp;
   } catch (error) {
     return error;
