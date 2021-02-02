@@ -25,7 +25,7 @@ const About = () => {
         This application consumes a third-party API by fetching weather data and
         displaying the forecast based on user location. It interacts with the
         browser's Geolocation API to gather coordinate data. These coordinates
-        are then used as parameters for API calls the the Open Weather API. If
+        are then used as parameters in API calls to the Open Weather API. If
         location services are disabled by the host, users may alternatively
         enter their City and State manually.
       </AboutTextContainer>
