@@ -26,8 +26,8 @@ if (process.env.NODE_ENV === "production") {
 
   // app.get() defines what happens when the server receives HTTP GET requests
   // '*' = from any URL
-  const home = ["/", "/home"];
-  app.get(home, function (req, res) {
+  // const home = ["/", "/home"];
+  app.get("/*", function (req, res) {
     // sends the index.html (which is static) that includes the whole client app code.
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
