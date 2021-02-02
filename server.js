@@ -38,7 +38,7 @@ app.listen(port, (error) => {
   console.log(`Server running on port: ${port}`);
 });
 
-app.get("/weather-lat-lon", (req, res) => {
+app.get("/api/weather-lat-lon", (req, res) => {
   console.log("getting weather data by coordinates");
   const { lat, lon, units } = req.query;
   const endPoint = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${OPEN_WEATHER_API_KEY}`;
@@ -53,7 +53,7 @@ app.get("/weather-lat-lon", (req, res) => {
   })();
 });
 
-app.get("/reverse-geocode", (req, res) => {
+app.get("/api/reverse-geocode", (req, res) => {
   console.log("getting address data by coordinates");
   const { lat, lon } = req.query;
   const endPoint = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=jsonv2&zoom=10`;
@@ -69,7 +69,7 @@ app.get("/reverse-geocode", (req, res) => {
   })();
 });
 
-app.get("/weather-city-state", (req, res) => {
+app.get("/api/weather-city-state", (req, res) => {
   console.log("getting weather data by city and state");
   const { city, state } = req.query;
   const endPoint = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state}&units=imperial&appid=5758202996b1be0ee8ceedce38bf2225`;
@@ -84,7 +84,7 @@ app.get("/weather-city-state", (req, res) => {
   })();
 });
 
-app.get("/forecast", (req, res) => {
+app.get("/api/forecast", (req, res) => {
   console.log("getting forecast data by coordinates");
   const { lat, lon } = req.query;
   const endPoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lon}&units=imperial&exclude=hourly,minutely,alerts&appid=${OPEN_WEATHER_API_KEY}`;

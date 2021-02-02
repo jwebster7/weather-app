@@ -9,7 +9,7 @@ export const getWeatherDataByCoords = async (latitude, longitude) => {
   try {
     // const endPoint = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=imperial&appid=${process.env.OPEN_WEATHER_API_KEY}`;
     // const resp = axios.get(endPoint);
-    const resp = await axios.get("/weather-lat-lon", {
+    const resp = await axios.get("/api/weather-lat-lon", {
       params: params
     });
     return resp;
@@ -27,7 +27,7 @@ export const getWeatherDataByCityState = async (city, state) => {
   try {
     // const endPoint = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state}&units=imperial&appid=${process.env.OPEN_WEATHER_API_KEY}`;
     // const resp = axios.get(endPoint);
-    const resp = await axios.get("/weather-city-state", {
+    const resp = await axios.get("/api/weather-city-state", {
       params: params
     });
     return resp;
@@ -45,7 +45,7 @@ export const getCityAndState = async (latitude, longitude) => {
   try {
     // const endPoint = `https://nominatim.openstreetmap.org/reverse?lat=${latitude}&lon=${longitude}&format=jsonv2&zoom=10`;
     // const resp = axios.get(endPoint);
-    const resp = await axios.get("/reverse-geocode", {
+    const resp = await axios.get("/api/reverse-geocode", {
       params: params
     });
     return resp;
@@ -63,7 +63,7 @@ export const getWeatherForecast = async (latitude, longitude) => {
   try {
     // const endPoint = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=imperial&exclude=hourly,minutely,alerts&appid=${process.env.OPEN_WEATHER_API_KEY}`;
     // const resp = axios.get(endPoint);
-    const resp = await axios.get("/forecast", {
+    const resp = await axios.get("/api/forecast", {
       params: params
     });
     return resp;
