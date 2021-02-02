@@ -18,26 +18,6 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
-if (process.env.NODE_ENV === "production") {
-  app.use(compression());
-  app.use(enforce.HTTPS({ trustProtoHeader: true }));
-  // allows the BE app to serve static files from the client build directory
-  app.use(express.static(path.join(__dirname, "client/build")));
-
-  // app.get() defines what happens when the server receives HTTP GET requests
-  // '*' = from any URL
-  // const home = ["/", "/home"];
-  app.get("/*", function (req, res) {
-    // sends the index.html (which is static) that includes the whole client app code.
-    res.sendFile(path.join(__dirname, "client/build", "index.html"));
-  });
-}
-
-app.listen(port, (error) => {
-  if (error) throw error;
-  console.log(`Server running on port: ${port}`);
-});
-
 app.get("/api/weather-lat-lon", (req, res) => {
   console.log("getting weather data by coordinates");
   const { lat, lon, units } = req.query;
@@ -97,4 +77,24 @@ app.get("/api/forecast", (req, res) => {
       res.status(500).send(err);
     }
   })();
+});
+
+if (process.env.NODE_ENV === "production") {
+  app.use(compression());
+  app.use(enforce.HTTPS({ trustProtoHeader: true }));
+  // allows the BE app to serve static files from the client build directory
+  app.use(express.static(path.join(__dirname, "client/build")));
+
+  // app.get() defines what happens when the server receives HTTP GET requests
+  // '*' = from any URL
+  // const home = ["/", "/home"];
+  app.get("/*", function (req, res) {
+    // sends the index.html (which is static) that includes the whole client app code.
+    res.sendFile(path.join(__dirname, "client/build", "index.html"));
+  });
+}
+
+app.listen(port, (error) => {
+  if (error) throw error;
+  console.log(`Server running on port: ${port}`);
 });
