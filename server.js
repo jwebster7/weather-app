@@ -40,7 +40,7 @@ app.listen(port, (error) => {
 
 app.get("/weather-lat-lon", (req, res) => {
   const { lat, lon, units } = req.query;
-  const endPoint = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${OPEN_WEATHER_API_KEY}`;
+  const endPoint = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=${units}&appid=${OPEN_WEATHER_API_KEY}`;
 
   (async () => {
     try {
@@ -69,7 +69,7 @@ app.get("/reverse-geocode", (req, res) => {
 
 app.get("/weather-city-state", (req, res) => {
   const { city, state } = req.query;
-  const endPoint = `http://api.openweathermap.org/data/2.5/weather?q=${city},${state}&units=imperial&appid=5758202996b1be0ee8ceedce38bf2225`;
+  const endPoint = `https://api.openweathermap.org/data/2.5/weather?q=${city},${state}&units=imperial&appid=5758202996b1be0ee8ceedce38bf2225`;
 
   (async () => {
     try {
