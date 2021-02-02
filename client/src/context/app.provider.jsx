@@ -103,6 +103,7 @@ const AppProvider = ({ children }) => {
       try {
         getWeatherDataByCoords(latitude, longitude).then((resp) => {
           if (resp.status === 200) {
+            // console.log(resp);
             const current = formatCurrentWeatherData(resp.data);
             const dateTime = getLocalTimeData(resp.data);
             const weather = formatWeatherStatusData(resp.data);
