@@ -3,7 +3,10 @@ This is a weather app I made to get more experience with React, Express, third-p
 
 ## Front End
 For the client, I used React and styled components. I'm using the Context API and useReducer() hook to manage the data in the app.  
+
 As for styling, I considered using a more popular library such as Material UI, but I wanted to gain more experience using styled components.  
+
+I also attempted to make the application responsive for mobile devices. In the future, making apps mobile friendly / responsive will be a higher priority from the start.
 
 ## Back End
 For the server, I'm using Express. I chose to add a server in case I wanted to normalize data from third-party API calls before 
