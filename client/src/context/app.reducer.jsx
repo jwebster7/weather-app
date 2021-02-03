@@ -14,7 +14,6 @@ const AppReducer = (state, action) => {
     case AppActionTypes.SET_LOCAL_DATE_TIME:
       return { ...state, dateTime: action.payload };
     case AppActionTypes.SET_WEATHER_STATUS:
-      // console.log(action.payload);
       return { ...state, weather: action.payload };
     case AppActionTypes.SET_WEATHER_FORECAST:
       return { ...state, forecast: action.payload };

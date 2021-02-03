@@ -18,6 +18,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
+app.get("/api/reverse-geocode", (req, res) => {
+  console.log("getting address data by coordinates");
+  const { lat, lon } = req.query;
+  const endPoint = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=jsonv2&zoom=10`;
+
+  (async () => {
+    try {
+      const resp = await got(endPoint);
+      res.status(200).send(JSON.parse(resp.body).address);
+    } catch (err) {
+      res.status(500).send(err);
+    }
+  })();
+});
+
 app.get("/api/weather-lat-lon", (req, res) => {
   console.log("getting weather data by coordinates");
   const { lat, lon, units } = req.query;
@@ -33,16 +48,15 @@ app.get("/api/weather-lat-lon", (req, res) => {
   })();
 });
 
-app.get("/api/reverse-geocode", (req, res) => {
-  console.log("getting address data by coordinates");
-  const { lat, lon } = req.query;
-  const endPoint = `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=jsonv2&zoom=10`;
+app.get("/api/weather-zip-code", (req, res) => {
+  console.log("getting weather data by zip code");
+  const { zipCode } = req.query;
+  const endPoint = `http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${OPEN_WEATHER_API_KEY}`;
 
   (async () => {
     try {
       const resp = await got(endPoint);
-      const address = JSON.parse(resp.body).address;
-      res.status(200).send(address);
+      res.status(200).send(JSON.parse(resp.body));
     } catch (err) {
       res.status(500).send(err);
     }

@@ -57,3 +57,11 @@ export const formatCurrentWeatherForecast = (data) => {
   });
   return forecast;
 };
+
+export const formatAddressData = (data) => {
+  const city = data?.city ? data?.city : "";
+  const county = data?.county ? data?.county : "";
+  const state = data?.state ? data?.state : "";
+
+  return { city, county, state };
+};

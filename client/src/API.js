@@ -18,6 +18,23 @@ export const getWeatherDataByCoords = async (latitude, longitude) => {
   }
 };
 
+export const getWeatherDataByZipCode = async (zipCode) => {
+  const params = {
+    zipCode: zipCode,
+    units: "imperial"
+  };
+
+  try {
+    const resp = await axios.get("/api/weather-zip-code", {
+      params: params
+    });
+    return resp;
+  } catch (error) {
+    alert("Invalid zip code!");
+    return error;
+  }
+};
+
 export const getWeatherDataByCityState = async (city, state) => {
   const params = {
     city: city,

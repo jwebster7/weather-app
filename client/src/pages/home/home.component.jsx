@@ -17,7 +17,7 @@ const Home = () => {
           <CustomButton>Today's Weather</CustomButton>
         </PageLink>
         <PageLink to="/location">
-          <CustomButton>Enter City &amp; State</CustomButton>
+          <CustomButton>Enter a Zip Code</CustomButton>
         </PageLink>
         <PageLink to={`/forecast/${0}`}>
           <CustomButton>Weekly Forecast</CustomButton>
