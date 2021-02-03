@@ -30,7 +30,7 @@ export const getWeatherDataByZipCode = async (zipCode) => {
     });
     return resp;
   } catch (error) {
-    alert("Invalid zip code!");
+    alert("Invalid ZIP code!");
     return error;
   }
 };

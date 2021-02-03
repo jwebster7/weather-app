@@ -5,7 +5,6 @@ export const LocationContainer = styled.div`
   display: flex;
   flex-grow: 1;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
 
   @media screen and (max-width: 600px) {

@@ -30,6 +30,12 @@ const About = () => {
         enter their City and State manually.
       </AboutTextContainer>
       <AboutTextContainer>
+        I'm also interacting with the reverse endpoint on the Nominatim API to
+        gather location data (city, county, state). City, county, and state
+        results will vary depending on granularity of the coordinates used, so
+        often county and state will be shown while city is omitted.
+      </AboutTextContainer>
+      <AboutTextContainer>
         You can find me on{" "}
         <a
           href="https://www.linkedin.com/in/jwebster7"
@@ -72,6 +78,27 @@ const About = () => {
               OpenWeather
             </a>
           </CreditsListItem>
+          <CreditsListItem>
+            Third party API to reverse geocode -{" "}
+            <a
+              href="https://nominatim.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Nominatim
+            </a>
+          </CreditsListItem>
+          <CreditsListContainer>
+            <CreditsListItem>
+              <a
+                href="https://github.com/osm-search/Nominatim"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Nominatim Github
+              </a>
+            </CreditsListItem>
+          </CreditsListContainer>
           <CreditsListItem>
             All icons were supplied by{" "}
             <a

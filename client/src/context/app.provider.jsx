@@ -54,7 +54,7 @@ const AppProvider = ({ children }) => {
             type: AppActionTypes.TOGGLE_GEOLOCATION_ENABLED,
             payload: false
           });
-          alert("Unable to use location. Please search by city and state.");
+          alert("Unable to use location. Please search by ZIP code!.");
           console.log(error);
         },
         () => ({

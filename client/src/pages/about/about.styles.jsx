@@ -18,7 +18,7 @@ export const AboutTitleContainer = styled.h2`
 `;
 
 export const AboutTextContainer = styled.span`
-  padding-bottom: 30px;
+  padding-bottom: 25px;
 `;
 
 export const CreditsListContainer = styled.ul`
