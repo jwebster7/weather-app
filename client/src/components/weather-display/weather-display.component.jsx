@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ReactTooltip from "react-tooltip";
 
 import Spinner from "../spinner/spinner.component";
@@ -17,8 +17,16 @@ import {
   WeatherTextContainer
 } from "./weather-display.styles";
 
-const WeatherDisplay = ({ weather }) => {
+const isNullOrUndefined = (data) => {
+  // using the double bang operator for a truthy value fails because temperature data may equal 0
+  if (data === undefined || data === null) {
+    return true;
+  }
+  return false;
+};
 
+const WeatherDisplay = ({ weather }) => {
+  const [loading, setLoading] = useState(true);
   const weatherDataDisplay = weather
     ? Object.keys(weather).map((key, index) => {
         return (
@@ -37,15 +45,18 @@ const WeatherDisplay = ({ weather }) => {
       })
     : null;
 
-  const isLoading =
-    !!weather?.temp &&
-    !!weather?.feels_like &&
-    !!weather?.temp_max &&
-    !!weather?.temp_min &&
-    !!weather?.speed &&
-    !!weather?.humidity;
+  useEffect(() => {
+    const loadingState =
+      !isNullOrUndefined(weather?.temp) &&
+      !isNullOrUndefined(weather?.feels_like) &&
+      !isNullOrUndefined(weather?.temp_max) &&
+      !isNullOrUndefined(weather?.temp_min) &&
+      !isNullOrUndefined(weather?.speed) &&
+      !isNullOrUndefined(weather?.humidity);
+    setLoading(loadingState);
+  }, [weather]);
 
-  return !isLoading ? (
+  return !loading ? (
     <Spinner />
   ) : (
     <WeatherDisplayContainer className="weather-display-container">

@@ -14,26 +14,16 @@ import {
 import { useDispatch } from "../../context/app.provider";
 import AppActionTypes from "../../context/app.types";
 import { getWeatherDataByZipCode } from "../../API";
-import { formatWeatherStatusData, getLocalTimeData } from "../../API.utils";
+import {
+  formatCurrentWeatherData,
+  formatWeatherStatusData,
+  getLocalTimeData
+} from "../../API.utils";
 
 const LocationForm = () => {
-  // const [city, setCity] = useState("");
-  // const [state, setState] = useState("");
   const [zipCode, setZipCode] = useState("");
   const dispatch = useDispatch();
   const history = useHistory();
-
-  // const handleCityChange = (event) => {
-  //   event.preventDefault();
-  //   const value = event.target.value;
-  //   setCity(value);
-  // };
-
-  // const handleStateChange = (event) => {
-  //   event.preventDefault();
-  //   const value = event.target.value;
-  //   setState(value);
-  // };
 
   const handleZipChange = (event) => {
     event.preventDefault();
@@ -43,14 +33,14 @@ const LocationForm = () => {
     }
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    // const { city, state } = address;
     getWeatherDataByZipCode(zipCode).then((resp) => {
       if (resp.status === 200) {
         const { coord } = resp?.data;
         const dateTime = getLocalTimeData(resp?.data);
+        const current = formatCurrentWeatherData(resp?.data);
         const weather = formatWeatherStatusData(resp?.data);
         dispatch({
           type: AppActionTypes.SET_COORDINATES,
@@ -63,6 +53,10 @@ const LocationForm = () => {
         dispatch({
           type: AppActionTypes.SET_WEATHER_STATUS,
           payload: weather
+        });
+        dispatch({
+          type: AppActionTypes.GET_CURRENT_WEATHER_DATA,
+          payload: current
         });
 
         history.push("/weather");

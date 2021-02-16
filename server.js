@@ -50,8 +50,8 @@ app.get("/api/weather-lat-lon", (req, res) => {
 
 app.get("/api/weather-zip-code", (req, res) => {
   console.log("getting weather data by zip code");
-  const { zipCode } = req.query;
-  const endPoint = `http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&appid=${OPEN_WEATHER_API_KEY}`;
+  const { units, zipCode } = req.query;
+  const endPoint = `http://api.openweathermap.org/data/2.5/weather?zip=${zipCode}&units=${units}&appid=${OPEN_WEATHER_API_KEY}`;
 
   (async () => {
     try {
