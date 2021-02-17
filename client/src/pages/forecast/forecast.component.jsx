@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { useWeatherForecastData } from "../../context/app.provider";
 
 import CustomButton from "../../components/custom-button/custom-button.component";
-import Header from "../../components/header/header.component";
 import WeatherDisplay from "../../components/weather-display/weather-display.component";
 import WeatherHeader from "../../components/weather-header/weather-header.component";
 
@@ -58,7 +57,6 @@ const Forecast = ({ history }) => {
 
   return (
     <ForecastPageContainer>
-      <Header />
       {days[pageCount]}
       <ForecastPageButtonContainer>
         <CustomButton onClick={handlePrevDay} disabled={pageCount === 0}>

@@ -11,18 +11,9 @@ export const WeatherDisplayContainer = styled.div`
 `;
 
 export const WeatherDataContainer = styled.div`
-  min-width: 150px;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  @media screen and (max-width: 1100px) {
-    min-width: 150px;
-  }
-
-  @media screen and (max-width: 800px) {
-    min-width: 125px;
-  }
 `;
 
 export const WeatherDataGrid = styled.div`
@@ -30,23 +21,21 @@ export const WeatherDataGrid = styled.div`
   grid-template-columns: repeat(3, minmax(175px, 1fr));
   grid-template-rows: 1fr 1fr;
   grid-gap: 75px;
-  justify-items: center;
+  justify-items: left;
   align-items: center;
-  padding: 50px 0;
+  padding: 50px 6.5% 75px 6.5%;
 
   @media screen and (max-width: 1300px) {
-    padding: 25px 0 50px 0;
-
-    font-size: 30px;
+    padding: 25px 0 50px 25px;
+    font-size: 27.5px;
     grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
     grid-gap: 50px 25px;
   }
 
   @media screen and (max-width: 800px) {
-    padding: 25px 0 50px 0;
-
+    padding-left: 25px;
     font-size: 25px;
-    grid-template-columns: repeat(auto-fit, minmax(125px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     grid-gap: 50px 25px;
   }
 `;
@@ -78,6 +67,5 @@ export const WeatherTextContainer = styled.span`
   @media screen and (max-width: 800px) {
     font-size: 20px;
     margin: 0 auto 0 15px;
-
   }
 `;

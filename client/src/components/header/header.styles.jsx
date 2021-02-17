@@ -1,11 +1,13 @@
 import styled from "styled-components";
 
 export const HeaderContainer = styled.nav`
-  width: 100%;
+  width: 90%;
   text-align: left;
   margin: 0;
   padding: 0;
   a {
+    margin: 0;
+    padding: 0;
     color: rgb(104, 99, 212);
     font-family: "Ubuntu", sans-serif;
     font-size: 20px;

@@ -17,6 +17,7 @@ export const HomePageContainer = styled.div`
 `;
 
 export const HomeTitleContainer = styled.h1`
+  /* color: white; */
   text-align: center;
 
   @media screen and (max-width: 800px) {
@@ -45,8 +46,6 @@ export const PageLinkContainer = styled.div`
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-gap: 75px 50px;
   }
-
-
 
   @media screen and (max-width: 800px) {
     margin: 30px 0;

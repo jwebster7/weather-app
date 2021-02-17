@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const CustomButtonContainer = styled.button`
   height: 75px;
-  width: 325px;
-  border-radius: 75px;
+  width: 300px;
+  border-radius: 9999px;
   padding: 0;
   border: none;
   background: none;

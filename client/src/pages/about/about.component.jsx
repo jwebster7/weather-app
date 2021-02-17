@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "../../components/header/header.component";
 
 import {
   AboutCreditsContainer,
+  AboutLinkContainer,
   AboutPageContainer,
   AboutTextContainer,
   AboutTitleContainer,
@@ -13,56 +13,54 @@ import {
 const About = () => {
   return (
     <AboutPageContainer>
-      <Header />
       <AboutTitleContainer>About</AboutTitleContainer>
       <AboutTextContainer>
         Hi! My name is Joe Webster. I'm a Software Developer based in the
-        midwest. This is a Weather App I made to get more experience with
-        ReactJS, ExpressJS, and NodeJS. The primary focus when building this app
-        was to work with state and external APIs.
+        midwest. This is a Weather App I made to get more experience with the
+        React ecosystem, Express, and Node.
       </AboutTextContainer>
       <AboutTextContainer>
         This application consumes a third-party API by fetching weather data and
-        displaying the forecast based on user location. It interacts with the
-        browser's Geolocation API to gather coordinate data. These coordinates
-        are then used as parameters in API calls to the Open Weather API. If
-        location services are disabled by the host, users may alternatively
-        enter their City and State manually.
+        displaying the forecast based on user location. The app interacts with
+        the browser's Geolocation API to gather coordinate data on initial page
+        load. These coordinates are then used as parameters in API calls to the
+        Open Weather API. If location services are disabled by the host, users
+        may enter their ZIP Code manually.
       </AboutTextContainer>
       <AboutTextContainer>
-        I'm also interacting with the reverse endpoint on the Nominatim API to
-        gather location data (city, county, state). City, county, and state
-        results will vary depending on granularity of the coordinates used, so
-        often county and state will be shown while city is omitted.
+        I'm also using the reverse endpoint on the Nominatim API to gather
+        location data (city, county, state). City, county, and state results
+        will vary depending on granularity of the coordinates used, so often
+        county and state will be shown while city is omitted.
       </AboutTextContainer>
       <AboutTextContainer>
         You can find me on{" "}
-        <a
+        <AboutLinkContainer
           href="https://www.linkedin.com/in/jwebster7"
           target="_blank"
           rel="noopener noreferrer"
         >
           LinkedIn
-        </a>{" "}
-        or other social media sites if you have any questions. Thanks!
+        </AboutLinkContainer>{" "}
+        or other social media sites if you have any questions.
       </AboutTextContainer>
       <AboutTextContainer>
         Feel free to check out the{" "}
-        <a
+        <AboutLinkContainer
           href="https://github.com/jwebster7/weather-app"
           target="_blank"
           rel="noopener noreferrer"
         >
           code for this site
-        </a>{" "}
+        </AboutLinkContainer>{" "}
         on my{" "}
-        <a
+        <AboutLinkContainer
           href="https://github.com/jwebster7"
           target="_blank"
           rel="noopener noreferrer"
         >
           Github
-        </a>
+        </AboutLinkContainer>
         .
       </AboutTextContainer>
       <AboutCreditsContainer>
@@ -70,45 +68,45 @@ const About = () => {
         <CreditsListContainer>
           <CreditsListItem>
             Third party API to fetch weather data -{" "}
-            <a
+            <AboutLinkContainer
               href="https://openweathermap.org/"
               target="_blank"
               rel="noopener noreferrer"
             >
               OpenWeather
-            </a>
+            </AboutLinkContainer>
           </CreditsListItem>
           <CreditsListItem>
             Third party API to reverse geocode -{" "}
-            <a
+            <AboutLinkContainer
               href="https://nominatim.org/"
               target="_blank"
               rel="noopener noreferrer"
             >
               Nominatim
-            </a>
+            </AboutLinkContainer>
           </CreditsListItem>
           <CreditsListContainer>
             <CreditsListItem>
-              <a
+              <AboutLinkContainer
                 href="https://github.com/osm-search/Nominatim"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Nominatim Github
-              </a>
+              </AboutLinkContainer>
             </CreditsListItem>
           </CreditsListContainer>
           <CreditsListItem>
             All icons were supplied by{" "}
-            <a
+            <AboutLinkContainer
               href="https://www.flaticon.com/"
               title="Flaticon"
               target="_blank"
               rel="noopener noreferrer"
             >
               Flaticon
-            </a>
+            </AboutLinkContainer>
             <br />
           </CreditsListItem>
           <CreditsListItem>
@@ -117,40 +115,40 @@ const About = () => {
           </CreditsListItem>
           <CreditsListContainer>
             <CreditsListItem>
-              <a
+              <AboutLinkContainer
                 href="https://www.freepik.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Freepik
-              </a>
+              </AboutLinkContainer>
             </CreditsListItem>
             <CreditsListItem>
-              <a
+              <AboutLinkContainer
                 href="https://www.flaticon.com/authors/vitaly-gorbachev"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Vitaly Gorbachev
-              </a>
+              </AboutLinkContainer>
             </CreditsListItem>
             <CreditsListItem>
-              <a
+              <AboutLinkContainer
                 href="https://www.flaticon.com/authors/vignesh-oviyan"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 Vignesh Oviyan
-              </a>
+              </AboutLinkContainer>
             </CreditsListItem>
             <CreditsListItem>
-              <a
+              <AboutLinkContainer
                 href="https://www.flaticon.com/authors/srip"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 srip
-              </a>
+              </AboutLinkContainer>
             </CreditsListItem>
           </CreditsListContainer>
         </CreditsListContainer>

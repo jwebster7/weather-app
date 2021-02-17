@@ -15,7 +15,7 @@ export const AppStyledContainer = styled.div`
   justify-content: flex-start;
   font-family: "Ubuntu", sans-serif;
   font-size: 30px;
-  background-color: rgba(255, 255, 255, 0.65);
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 50px;
 
   @media screen and (max-width: 1100px) {

@@ -6,7 +6,7 @@ import { HeaderContainer } from "./header.styles";
 const Header = () => {
   return (
     <HeaderContainer>
-      <Link to="/home">{`<- Back`}</Link>
+      <Link to="/home">{`Back to Home`}</Link>
     </HeaderContainer>
   );
 };

@@ -6,7 +6,6 @@ import {
   useWeatherStatusData
 } from "../../context/app.provider";
 
-import Header from "../../components/header/header.component";
 import WeatherDisplay from "../../components/weather-display/weather-display.component";
 import WeatherHeader from "../../components/weather-header/weather-header.component";
 
@@ -19,7 +18,6 @@ const Weather = () => {
 
   return (
     <WeatherContainer className="weather-container">
-      <Header />
       <WeatherHeader conditions={conditions} dateTime={dateTime} />
       <WeatherDisplay weather={weather} />
     </WeatherContainer>
