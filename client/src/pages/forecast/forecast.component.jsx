@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 import { useWeatherForecastData } from "../../context/app.provider";
 
@@ -50,10 +50,13 @@ const Forecast = ({ history }) => {
   };
 
   useEffect(() => {
-    history.push(`/forecast/${pageCount}`);
+    const newRoute = `/forecast/${pageCount}`;
+    // to avoid an initial redundant route in history
+    if (history.location.pathname === newRoute) {
+      return;
+    }
+    history.push(newRoute);
   }, [pageCount, history]);
-
-  useEffect(() => {}, [pageCount]);
 
   return (
     <ForecastPageContainer>
