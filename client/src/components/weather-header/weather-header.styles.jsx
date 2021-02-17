@@ -30,12 +30,12 @@ export const WeatherDisplayHeaderContainer = styled.div`
 `;
 
 export const WeatherPrimaryIconContainer = styled.img`
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
 
   @media screen and (max-width: 1000px) {
-    width: 125px;
-    height: 125px;
+    width: 90px;
+    height: 90px;
   }
 
   @media screen and (max-width: 800px) {
@@ -50,13 +50,13 @@ export const WeatherDisplayTitleContainer = styled.div`
   flex-direction: column;
   justify-content: space-evenly;
   flex-grow: 1;
-  font-size: 40px;
+  font-size: 32.5px;
 
   @media screen and (max-width: 1000px) {
-    font-size: 32.5px;
+    font-size: 27.5px;
   }
 
   @media screen and (max-width: 800px) {
-    font-size: 25px;
+    font-size: 22.5px;
   }
 `;

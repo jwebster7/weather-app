@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 export const AppStyledContainer = styled.div`
-  min-height: 700px;
-  width: 75%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  min-height: 600px;
+  width: 65%;
   min-width: 400px;
   padding: 50px;
 

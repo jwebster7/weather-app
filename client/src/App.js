@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
 import AppContainer from "./components/app-container/app-container.component";
+import ScrollToTop from "./components/scroll-to-top/scroll-to-top.component";
 import AppProvider from "./context/app.provider";
 
 import "./App.css";
@@ -11,7 +12,9 @@ const App = () => {
     <div className="App">
       <AppProvider>
         <BrowserRouter>
-          <AppContainer />
+          <ScrollToTop>
+            <AppContainer />
+          </ScrollToTop>
         </BrowserRouter>
       </AppProvider>
       <div className="created-by">Created in 2020 by Joseph Webster</div>
