@@ -40,6 +40,14 @@ export const AboutLinkContainer = styled.a`
     font-size: 23px;
     color: black;
   }
+
+  @media screen and (max-width: 800px) {
+    font-size: 15px;
+    :hover {
+      font-size: 15.5px;
+      color: black;
+    }
+  }
 `;
 
 export const CreditsListContainer = styled.ul`
