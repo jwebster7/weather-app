@@ -17,15 +17,15 @@ export const HomePageContainer = styled.div`
 `;
 
 export const HomeTitleContainer = styled.h1`
-  /* color: white; */
+  font-size: 3rem;
   text-align: center;
 
   @media screen and (max-width: 800px) {
-    font-size: 45px;
+    font-size: 2rem;
   }
 
   @media screen and (max-width: 600px) {
-    font-size: 35px;
+    font-size: 1.5rem;
   }
 `;
 

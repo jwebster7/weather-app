@@ -5,7 +5,7 @@ export const AboutPageContainer = styled.div`
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  font-size: 22.5px;
+  font-size: 1rem;
 
   @media screen and (max-width: 1300px) {
     padding: 0;
@@ -34,10 +34,9 @@ export const AboutLinkContainer = styled.a`
   transition-duration: 0.3s;
   transition-timing-function: linear;
   transition-delay: 0;
-  transition: color 0.3s ease-in-out, font-size 0.3s ease-in-out;
+  transition: color 300ms ease-in-out;
 
   :hover {
-    font-size: 23px;
     color: black;
   }
 

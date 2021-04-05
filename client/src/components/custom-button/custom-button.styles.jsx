@@ -8,13 +8,15 @@ export const CustomButtonContainer = styled.button`
   border: none;
   background: none;
 
+  ${({ disabled }) =>
+    !!disabled ? `visibility: hidden;` : `visibility: visible;`}
   display: flex;
   align-items: center;
   justify-content: center;
 
   background-color: rgb(104, 99, 212);
   font-family: "Ubuntu", sans-serif;
-  font-size: 25px;
+  font-size: 1.5rem;
   font-weight: 700;
   color: white;
   text-decoration: none;
@@ -37,13 +39,13 @@ export const CustomButtonContainer = styled.button`
   @media screen and (max-width: 1100px) {
     height: 75px;
     max-width: 275px;
-    font-size: 20px;
+    font-size: 1.25rem;
     margin: 0 15px;
   }
 
   @media screen and (max-width: 600px) {
     height: 65px;
     max-width: 200px;
-    font-size: 17.5px;
+    font-size: 1rem;
   }
 `;

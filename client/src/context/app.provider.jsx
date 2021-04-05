@@ -14,14 +14,13 @@ import {
 } from "../API.utils";
 
 import AppReducer from "./app.reducer";
-import { initialState } from "./app.state.jsx";
 import AppActionTypes from "./app.types";
 
 export const AppContext = React.createContext();
 const { Provider } = AppContext;
 
 const AppProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(AppReducer, initialState);
+  const [state, dispatch] = useReducer(AppReducer, {});
 
   useEffect(() => {
     if (window.localStorage.getItem("coordinates")) {
@@ -54,20 +53,20 @@ const AppProvider = ({ children }) => {
             type: AppActionTypes.TOGGLE_GEOLOCATION_ENABLED,
             payload: false
           });
-          alert("Unable to use location. Please search by ZIP code!.");
+          alert("Unable to use location. Please search by ZIP code!");
           console.log(error);
         },
-        () => ({
+        {
           enableHighAccuracy: true,
-          timeout: 5000
-        })
+          timeout: 15000
+        }
       );
     }
   }, []);
 
   useEffect(() => {
     const geolocated =
-      !!state.coordinates.latitude && !!state.coordinates.longitude;
+      !!state?.coordinates?.latitude && !!state?.coordinates?.longitude;
     if (geolocated) {
       const { latitude, longitude } = state.coordinates;
       try {
@@ -87,17 +86,17 @@ const AppProvider = ({ children }) => {
       }
     }
   }, [
-    state.geolocationEnabled,
-    state.coordinates,
-    state.coordinates.latitude,
-    state.coordinates.latitude
+    state?.geolocationEnabled,
+    state?.coordinates,
+    state?.coordinates?.latitude,
+    state?.coordinates?.latitude
   ]);
 
   useEffect(() => {
     const geolocated =
-      state.geolocationEnabled &&
-      !!state.coordinates.latitude &&
-      !!state.coordinates.longitude;
+      state?.geolocationEnabled &&
+      !!state?.coordinates?.latitude &&
+      !!state?.coordinates?.longitude;
     if (geolocated) {
       const { latitude, longitude } = state.coordinates;
       try {
@@ -126,17 +125,15 @@ const AppProvider = ({ children }) => {
       }
     }
   }, [
-    state.geolocationEnabled,
-    state.coordinates,
-    state.coordinates.latitude,
-    state.coordinates.latitude
+    state?.geolocationEnabled,
+    state?.coordinates,
+    state?.coordinates?.latitude,
+    state?.coordinates?.latitude
   ]);
 
   useEffect(() => {
     const geolocated =
-      state.geolocationEnabled &&
-      !!state.coordinates.latitude &&
-      !!state.coordinates.longitude;
+      !!state?.coordinates?.latitude && !!state?.coordinates?.longitude;
     if (geolocated) {
       const { latitude, longitude } = state.coordinates;
       getWeatherForecast(latitude, longitude).then((resp) => {
@@ -157,10 +154,9 @@ const AppProvider = ({ children }) => {
       });
     }
   }, [
-    state.geolocationEnabled,
-    state.coordinates,
-    state.coordinates.latitude,
-    state.coordinates.latitude
+    state?.coordinates,
+    state?.coordinates?.latitude,
+    state?.coordinates?.latitude
   ]);
 
   return <Provider value={{ state, dispatch }}>{children}</Provider>;

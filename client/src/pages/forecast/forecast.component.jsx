@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import { useWeatherForecastData } from "../../context/app.provider";
-
 import CustomButton from "../../components/custom-button/custom-button.component";
+import Spinner from "../../components/spinner/spinner.component";
 import WeatherDisplay from "../../components/weather-display/weather-display.component";
 import WeatherHeader from "../../components/weather-header/weather-header.component";
+
+import { useWeatherForecastData } from "../../context/app.provider";
 
 import {
   DailyForecastContainer,
@@ -18,18 +19,20 @@ const Forecast = ({ history }) => {
   const [pageCount, setPageCount] = useState(initialPageId);
   const forecast = useWeatherForecastData();
 
-  const days = forecast.map((day) => {
-    const conditions = day?.weather;
-    const weather = day?.current;
-    const dt = day?.dt;
-    const dateTime = new Date(dt * 1000).toLocaleDateString();
-    return (
-      <DailyForecastContainer key={dt}>
-        <WeatherHeader conditions={conditions} dateTime={dateTime} />
-        <WeatherDisplay weather={weather} />
-      </DailyForecastContainer>
-    );
-  });
+  const days = !!forecast
+  ? forecast.map((day) => {
+      const conditions = day?.weather;
+      const weather = day?.current;
+      const dt = day?.dt;
+      const dateTime = new Date(dt * 1000).toLocaleDateString();
+      return (
+        <DailyForecastContainer key={dt}>
+          <WeatherHeader conditions={conditions} dateTime={dateTime} />
+          <WeatherDisplay weather={weather} />
+        </DailyForecastContainer>
+      );
+    })
+  : null;
 
   const handleNextDay = () => {
     if (pageCount >= days.length - 1) {
@@ -58,7 +61,7 @@ const Forecast = ({ history }) => {
     history.push(newRoute);
   }, [pageCount, history]);
 
-  return (
+  return !!days ? (
     <ForecastPageContainer>
       {days[pageCount]}
       <ForecastPageButtonContainer>
@@ -73,6 +76,8 @@ const Forecast = ({ history }) => {
         </CustomButton>
       </ForecastPageButtonContainer>
     </ForecastPageContainer>
+  ) : (
+    <Spinner />
   );
 };
 

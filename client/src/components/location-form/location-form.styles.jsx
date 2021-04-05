@@ -17,16 +17,13 @@ export const FormInputContainer = styled.div`
 
 export const FormInputLabel = styled.label`
   font-weight: 700;
-
-  @media screen and (max-width: 600px) {
-    font-size: 25px;
-  }
+  font-size: 1.25rem;
 `;
 
 export const FormInput = styled.input`
   background: none;
   background-color: white;
-  font-size: 25px;
+  font-size: 1.25rem;
   padding: 10px 10px 10px 5px;
   display: block;
   width: 350px;
@@ -42,7 +39,7 @@ export const FormInput = styled.input`
 export const FormTitle = styled.h2`
   margin: 10px 0 30px 0;
   @media screen and (max-width: 600px) {
-    font-size: 35px;
+    font-size: 1.5rem;
   }
 `;
 
