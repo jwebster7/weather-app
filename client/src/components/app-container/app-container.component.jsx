@@ -10,13 +10,13 @@ import Weather from "../../pages/weather/weather.component";
 
 import Header from "../header/header.component";
 
-import { AppStyledContainer } from "./app-container.styles";
+import { StyledAppContainer } from "./app-container.styles";
 
 const AppContainer = () => {
   const { pathname } = useLocation();
 
   return (
-    <AppStyledContainer className="app-container">
+    <StyledAppContainer className="app-container">
       {!pathname.toString().includes("home") ? <Header /> : null}
       <Switch>
         <Route exact path="/">
@@ -32,7 +32,7 @@ const AppContainer = () => {
         <Route path="/about" component={About} />
         <Route path="/forecast/:forecastid" exactly component={Forecast} />
       </Switch>
-    </AppStyledContainer>
+    </StyledAppContainer>
   );
 };
 

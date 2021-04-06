@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HeaderContainer = styled.nav`
+const HeaderContainer = styled.nav`
   width: 90%;
   text-align: left;
   margin: 0;
@@ -23,3 +23,5 @@ export const HeaderContainer = styled.nav`
     }
   }
 `;
+
+export default HeaderContainer;

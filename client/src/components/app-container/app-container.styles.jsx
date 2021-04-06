@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const AppStyledContainer = styled.div`
+export const StyledAppContainer = styled.div`
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;

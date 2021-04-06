@@ -79,25 +79,6 @@ const LocationForm = () => {
           onChange={handleZipChange}
           required
         />
-        {/* <FormInputLabel>City </FormInputLabel>
-        <FormInput
-          type="text"
-          name="city"
-          label="city"
-          value={city}
-          placeholder="city name"
-          onChange={handleCityChange}
-          required
-        />
-        <FormInputLabel>State </FormInputLabel>
-        <FormInput
-          type="text"
-          name="state"
-          label="state"
-          value={state}
-          placeholder="state name"
-          onChange={handleStateChange}
-        /> */}
       </FormInputContainer>
       <ButtonContainer>
         <CustomButton type="submit">Get Weather</CustomButton>
