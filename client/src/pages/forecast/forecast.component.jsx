@@ -20,19 +20,19 @@ const Forecast = ({ history }) => {
   const forecast = useWeatherForecastData();
 
   const days = !!forecast
-  ? forecast.map((day) => {
-      const conditions = day?.weather;
-      const weather = day?.current;
-      const dt = day?.dt;
-      const dateTime = new Date(dt * 1000).toLocaleDateString();
-      return (
-        <DailyForecastContainer key={dt}>
-          <WeatherHeader conditions={conditions} dateTime={dateTime} />
-          <WeatherDisplay weather={weather} />
-        </DailyForecastContainer>
-      );
-    })
-  : null;
+    ? forecast.map((day) => {
+        const conditions = day?.weather;
+        const weather = day?.current;
+        const dt = day?.dt;
+        const dateTime = new Date(dt * 1000).toLocaleDateString();
+        return (
+          <DailyForecastContainer key={dt}>
+            <WeatherHeader conditions={conditions} dateTime={dateTime} />
+            <WeatherDisplay weather={weather} />
+          </DailyForecastContainer>
+        );
+      })
+    : null;
 
   const handleNextDay = () => {
     if (pageCount >= days.length - 1) {

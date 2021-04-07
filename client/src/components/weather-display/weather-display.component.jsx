@@ -46,17 +46,18 @@ const WeatherDisplay = ({ weather }) => {
     : null;
 
   useEffect(() => {
-    const loadingState =
-      !isNullOrUndefined(weather?.temp) &&
-      !isNullOrUndefined(weather?.feels_like) &&
-      !isNullOrUndefined(weather?.temp_max) &&
-      !isNullOrUndefined(weather?.temp_min) &&
-      !isNullOrUndefined(weather?.speed) &&
-      !isNullOrUndefined(weather?.humidity);
+    const loadingState = (
+      isNullOrUndefined(weather?.temp) ||
+      isNullOrUndefined(weather?.feels_like) ||
+      isNullOrUndefined(weather?.temp_max) ||
+      isNullOrUndefined(weather?.temp_min) ||
+      isNullOrUndefined(weather?.speed) ||
+      isNullOrUndefined(weather?.humidity)
+    );
     setLoading(loadingState);
   }, [weather]);
 
-  return !loading ? (
+  return loading ? (
     <Spinner />
   ) : (
     <WeatherDisplayContainer className="weather-display-container">

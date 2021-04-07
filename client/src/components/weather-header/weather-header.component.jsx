@@ -2,7 +2,6 @@ import React from "react";
 import ReactTooltip from "react-tooltip";
 
 import { useAddressData } from "../../context/app.provider";
-import Spinner from "../spinner/spinner.component";
 
 import { iconReducer } from "../../assets/index";
 
@@ -24,8 +23,7 @@ const WeatherHeader = ({ conditions, dateTime }) => {
   const weatherStatusIcon = iconReducer(iconCode);
   const { status, icon } = weatherStatusIcon;
 
-  const loaded = address && dateTime && status && icon;
-  return loaded ? (
+  return (
     <WeatherDisplayHeaderContainer className="weather-display-header">
       <WeatherPrimaryIconContainer
         src={icon}
@@ -40,8 +38,6 @@ const WeatherHeader = ({ conditions, dateTime }) => {
       </WeatherDisplayTitleContainer>
       <ReactTooltip />
     </WeatherDisplayHeaderContainer>
-  ) : (
-    <Spinner />
   );
 };
 
