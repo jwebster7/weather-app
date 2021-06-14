@@ -8,18 +8,17 @@ import AppProvider from "./context/app.provider";
 import "./App.css";
 
 const App = () => {
-  return (
-    <div className="App">
-      <AppProvider>
-        <BrowserRouter>
-          <ScrollToTop>
-            <AppContainer />
-          </ScrollToTop>
-        </BrowserRouter>
-      </AppProvider>
-      <div className="created-by">Created in 2020 by Joseph Webster</div>
-    </div>
-  );
+    return (
+        <div className='App'>
+            <AppProvider>
+                <BrowserRouter>
+                    <ScrollToTop>
+                        <AppContainer />
+                    </ScrollToTop>
+                </BrowserRouter>
+            </AppProvider>
+        </div>
+    );
 };
 
 export default App;
